@@ -61,9 +61,12 @@
   (package-install 'jedi))
 (unless (package-installed-p 'semx)
   (package-install 'smex))
+(unless (package-installed-p 'ein)
+  (package-install 'ein))
 
 ;; Jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (setq jedi:complete-on-dot t)
 
 ;; Smex -> a smart M-x enhancement for Emacs.
