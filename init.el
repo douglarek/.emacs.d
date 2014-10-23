@@ -1,3 +1,4 @@
+;;;;;;;;;;;;;;;;;;;;;;;; Self Settings ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; backup settings
 (defvar backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p backup-directory))
@@ -42,7 +43,7 @@
 ;; disable menu bar
 (menu-bar-mode -1)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;; Package Installed ;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'package)
 (add-to-list 'package-archives
