@@ -79,3 +79,8 @@
 ;; Whitespace-cleanup -> In Emacs, intelligently call whitespace-cleanup on save
 (unless (package-installed-p 'whitespace-cleanup-mode)
   (package-install 'whitespace-cleanup-mode))
+
+;; Git-Gutter -> Emacs port of GitGutter which is Sublime Text Plugin
+(unless (package-installed-p 'git-gutter)
+  (package-install 'git-gutter))
+(global-git-gutter-mode t)
