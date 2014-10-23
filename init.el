@@ -88,3 +88,22 @@
 (unless (package-installed-p 'git-gutter)
   (package-install 'git-gutter))
 (global-git-gutter-mode t)
+
+;; Web-mode -> web template editing mode for Emacs
+(unless (package-installed-p 'web-mode)
+  (package-install 'web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.xml?\\'" . web-mode))
+(setq web-mode-engines-alist
+      '(("php"    . "\\.phtml\\'")
+        ("blade"  . "\\.blade\\."))
+)
