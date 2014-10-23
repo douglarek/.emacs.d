@@ -39,6 +39,9 @@
 ;; disable startup message
 (setq inhibit-startup-message t)
 
+;; disable menu bar
+(menu-bar-mode -1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'package)
