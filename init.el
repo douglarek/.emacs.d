@@ -1,4 +1,4 @@
-; backup settings
+;; backup settings
 (defvar backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p backup-directory))
         (make-directory backup-directory t))
@@ -15,7 +15,7 @@
       auto-save-interval 200            ; number of keystrokes between auto-saves (default: 300)
       )
 
-; auto-save settings
+;; auto-save settings
 (defvar auto-save-directory (concat user-emacs-directory "auto-save"))
 (if (not (file-exists-p auto-save-directory))
         (make-directory auto-save-directory t))
@@ -24,7 +24,7 @@
              (list "\\(.+/\\)*\\(.*?\\)" (expand-file-name "\\2" auto-save-directory))
              t)
 
-; yes -> y, no -> n
+;; yes -> y, no -> n
 (defun my-yes-or-mumble-p (prompt)
    "PROMPT user with a yes-or-no question, but only test for yes."
    (if (string= "yes"
@@ -36,7 +36,7 @@
 
 (defalias 'yes-or-no-p 'my-yes-or-mumble-p)
 
-; disable startup message
+;; disable startup message
 (setq inhibit-startup-message t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -44,7 +44,6 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
@@ -52,26 +51,28 @@
 
 (package-initialize)
 
-(unless package-archive-contents    ;; Refresh the packages descriptions
+;; Refresh the packages descriptions
+(unless package-archive-contents
   (package-refresh-contents))
-(setq package-load-list '(all))     ;; List of packages to load
-(unless (package-installed-p 'org)
-  (package-install 'org))
-(unless (package-installed-p 'jedi)
-  (package-install 'jedi))
-(unless (package-installed-p 'semx)
-  (package-install 'smex))
-(unless (package-installed-p 'ein)
-  (package-install 'ein))
+
+;; List of packages to load
+(setq package-load-list '(all))
 
 ;; Jedi -> Python auto-completion for Emacs.
+(unless (package-installed-p 'jedi)
+  (package-install 'jedi))
 (add-hook 'python-mode-hook 'jedi:setup)
+(unless (package-installed-p 'ein)
+  (package-install 'ein))
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (setq jedi:complete-on-dot t)
 
 ;; Smex -> a smart M-x enhancement for Emacs.
+(unless (package-installed-p 'semx)
+  (package-install 'smex))
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
