@@ -76,3 +76,6 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
+;; Whitespace-cleanup -> In Emacs, intelligently call whitespace-cleanup on save
+(unless (package-installed-p 'whitespace-cleanup-mode)
+  (package-install 'whitespace-cleanup-mode))
