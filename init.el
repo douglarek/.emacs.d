@@ -62,7 +62,7 @@
 ;; List of packages to load
 (setq package-load-list '(all))
 
-;; Jedi -> Python auto-completion for Emacs.
+;; jedi -> Python auto-completion for Emacs.
 (unless (package-installed-p 'jedi)
   (package-install 'jedi))
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -71,7 +71,7 @@
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (setq jedi:complete-on-dot t)
 
-;; Smex -> a smart M-x enhancement for Emacs.
+;; smex -> A smart M-x enhancement for Emacs.
 (unless (package-installed-p 'semx)
   (package-install 'smex))
 (smex-initialize)
@@ -80,16 +80,16 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-;; Whitespace-cleanup -> In Emacs, intelligently call whitespace-cleanup on save
+;; whitespace-cleanup -> In Emacs, intelligently call whitespace-cleanup on save
 (unless (package-installed-p 'whitespace-cleanup-mode)
   (package-install 'whitespace-cleanup-mode))
 
-;; Git-Gutter -> Emacs port of GitGutter which is Sublime Text Plugin
+;; git-gutter -> Emacs port of GitGutter which is Sublime Text Plugin
 (unless (package-installed-p 'git-gutter)
   (package-install 'git-gutter))
 (global-git-gutter-mode t)
 
-;; Web-mode -> web template editing mode for Emacs
+;; web-mode -> web template editing mode for Emacs
 (unless (package-installed-p 'web-mode)
   (package-install 'web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
