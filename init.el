@@ -62,18 +62,20 @@
 ;; List of packages to load
 (setq package-load-list '(all))
 
+;; Install all needed
+(package-install 'jedi)
+(package-install 'ein)
+(package-install 'smex)
+(package-install 'whitespace-cleanup-mode)
+(package-install 'git-gutter)
+(package-install 'web-mode)
+
 ;; jedi -> Python auto-completion for Emacs.
-(unless (package-installed-p 'jedi)
-  (package-install 'jedi))
 (add-hook 'python-mode-hook 'jedi:setup)
-(unless (package-installed-p 'ein)
-  (package-install 'ein))
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (setq jedi:complete-on-dot t)
 
 ;; smex -> A smart M-x enhancement for Emacs.
-(unless (package-installed-p 'semx)
-  (package-install 'smex))
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -81,17 +83,11 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; whitespace-cleanup -> In Emacs, intelligently call whitespace-cleanup on save
-(unless (package-installed-p 'whitespace-cleanup-mode)
-  (package-install 'whitespace-cleanup-mode))
 
 ;; git-gutter -> Emacs port of GitGutter which is Sublime Text Plugin
-(unless (package-installed-p 'git-gutter)
-  (package-install 'git-gutter))
 (global-git-gutter-mode t)
 
 ;; web-mode -> web template editing mode for Emacs
-(unless (package-installed-p 'web-mode)
-  (package-install 'web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
