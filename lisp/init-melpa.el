@@ -25,6 +25,8 @@
 (package-install 'git-gutter)
 (package-install 'web-mode)
 (package-install 'haskell-mode)
+(package-install 'magit)
+(package-install 'gist)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
