@@ -24,6 +24,7 @@
 (package-install 'whitespace-cleanup-mode)
 (package-install 'git-gutter)
 (package-install 'web-mode)
+(package-install 'haskell-mode)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -58,5 +59,8 @@
       '(("php"    . "\\.phtml\\'")
         ("blade"  . "\\.blade\\."))
 )
+
+;; Emacs mode for Haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 (provide 'init-melpa)
