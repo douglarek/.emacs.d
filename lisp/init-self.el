@@ -43,4 +43,7 @@
 ;; disable menu bar
 (menu-bar-mode -1)
 
+;; enable ido
+(ido-mode t)
+
 (provide 'init-self)
