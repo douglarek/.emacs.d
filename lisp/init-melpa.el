@@ -33,6 +33,7 @@
 (package-install 'smartparens)
 (package-install 'yasnippet)
 (package-install 'company)
+(package-install 'window-number)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -77,5 +78,12 @@
 
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; Select windows by numbers -> window-number
+(require 'window-number)
+(window-number-mode t)
+;; `window-number-switch` same as `other-window` (C-x o) when windows less than three;
+;; so binding `window-number-switch` on 'C-x o' to instead `other-window`.
+(global-set-key (kbd "C-x o") 'window-number-switch)
 
 (provide 'init-melpa)
