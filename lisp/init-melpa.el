@@ -34,6 +34,7 @@
 (package-install 'yasnippet)
 (package-install 'company)
 (package-install 'window-number)
+(package-install 'ido-vertical-mode)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -85,5 +86,9 @@
 ;; `window-number-switch` same as `other-window` (C-x o) when windows less than three;
 ;; so binding `window-number-switch` on 'C-x o' to instead `other-window`.
 (global-set-key (kbd "C-x o") 'window-number-switch)
+
+;; Makes ido-mode display vertically -> ido-vertical-mode.el
+(if ido-mode
+    (ido-vertical-mode t))
 
 (provide 'init-melpa)
