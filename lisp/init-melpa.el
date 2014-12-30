@@ -32,6 +32,7 @@
 (package-install 'py-autopep8)
 (package-install 'smartparens)
 (package-install 'yasnippet)
+(package-install 'company)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -73,5 +74,8 @@
 ;; Python autopep8
 (add-hook 'before-save-hook 'py-autopep8-before-save)
 (setq py-autopep8-options '("--max-line-length=120"))
+
+;; company-mode
+(add-hook 'after-init-hook 'global-company-mode)
 
 (provide 'init-melpa)
