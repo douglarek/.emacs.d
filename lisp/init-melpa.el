@@ -4,6 +4,8 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -28,6 +30,8 @@
 (package-install 'magit)
 (package-install 'gist)
 (package-install 'py-autopep8)
+(package-install 'smartparens)
+(package-install 'yasnippet)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
