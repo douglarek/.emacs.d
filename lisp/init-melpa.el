@@ -27,6 +27,7 @@
 (package-install 'haskell-mode)
 (package-install 'magit)
 (package-install 'gist)
+(package-install 'py-autopep8)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -64,5 +65,9 @@
 
 ;; Emacs mode for Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+;; Python autopep8
+(add-hook 'before-save-hook 'py-autopep8-before-save)
+(setq py-autopep8-options '("--max-line-length=120"))
 
 (provide 'init-melpa)
