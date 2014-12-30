@@ -2,4 +2,5 @@
 
 (require 'init-self)
 
-(require 'init-melpa)
+(when (>= emacs-major-version 24)
+  (require 'init-melpa))

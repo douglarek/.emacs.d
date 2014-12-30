@@ -1,1 +1,1 @@
-git clone https://github.com/douglarek/.emacs.d.git ~/.emacs.d
+git clone https://github.com/douglarek/.emacs.d.git ~/.emacs.d // Emacs 24 +
