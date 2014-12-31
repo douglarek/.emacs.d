@@ -83,7 +83,7 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-check-syntax-automatically '(new-line))
 
-;;; Python only
+;; Python only
 (setq flycheck-python-flake8-executable (executable-find "flake8")
       flycheck-flake8-maximum-line-length 120)
 
