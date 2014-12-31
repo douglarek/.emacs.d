@@ -29,7 +29,7 @@
 (package-install 'haskell-mode)
 (package-install 'magit)
 (package-install 'gist)
-(package-install 'py-autopep8)
+(package-install 'flycheck)
 (package-install 'smartparens)
 (package-install 'yasnippet)
 (package-install 'company)
@@ -73,9 +73,13 @@
 ;; Emacs mode for Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
-;; Python autopep8
-(add-hook 'before-save-hook 'py-autopep8-before-save)
-(setq py-autopep8-options '("--max-line-length=120"))
+;; Flycheck support for pyflakes
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(setq flycheck-check-syntax-automatically '(save))
+
+;;; Python only
+(setq flycheck-python-flake8-executable (executable-find "flake8")
+      flycheck-flake8-maximum-line-length 120)
 
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
