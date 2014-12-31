@@ -55,8 +55,11 @@
 (setq ido-enable-flex-matching t
       ido-use-virtual-buffers t)
 
-;; Turn on column numbers
+;; turn on column numbers
 (setq column-number-mode t)
+
+;; enable org indent on startup
+(setq org-startup-indented t)
 
 (provide 'init-self)
 ;;; init-self.el ends here

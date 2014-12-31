@@ -35,6 +35,7 @@
 (package-install 'company)
 (package-install 'window-number)
 (package-install 'ido-vertical-mode)
+(package-install 'org)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
