@@ -1,4 +1,11 @@
-;;;;;;;;;;;;;;;;;;;;;;;; Self Settings ;;;;;;;;;;;;;;;;;;;;;;;;
+;;; init-self.el --- Self customed init file
+
+;;; Commentary:
+
+;; This file is used to manage self customed settings.
+
+;;; Code:
+
 ;; backup settings
 (defvar backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p backup-directory))
@@ -52,3 +59,4 @@
 (setq column-number-mode t)
 
 (provide 'init-self)
+;;; init-self.el ends here

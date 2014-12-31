@@ -1,4 +1,10 @@
-;;;;;;;;;;;;;;;;;;;;;;;; Package Installed ;;;;;;;;;;;;;;;;;;;;;;;;
+;;; init-melpa.el --- Melpa init file.
+
+;;; Commentary:
+
+;; This file is used to manage melpa packages' settings.
+
+;;; Code:
 
 (require 'package)
 (add-to-list 'package-archives
@@ -96,3 +102,4 @@
     (ido-vertical-mode t))
 
 (provide 'init-melpa)
+;;; init-melpa.el ends here
