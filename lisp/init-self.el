@@ -32,7 +32,8 @@
              (list "\\(.+/\\)*\\(.*?\\)" (expand-file-name "\\2" auto-save-directory))
              t)
 
-;; yes -> y, no -> n
+;; If you would prefer to have an empty response (hitting `RET`) or
+;; any other input to be `no` and still require the full word `yes` to use this function as an alias for `yes-or-no-p`
 (defun my-yes-or-mumble-p (prompt)
    "PROMPT user with a yes-or-no question, but only test for yes."
    (if (string= "yes"
