@@ -62,8 +62,5 @@
 ;; enable org indent on startup
 (setq org-startup-indented t)
 
-;; killing emacs is an import decision to me, so confirm it
-(setq confirm-kill-emacs 'yes-or-no-p)
-
 (provide 'init-self)
 ;;; init-self.el ends here
