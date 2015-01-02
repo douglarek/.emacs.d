@@ -64,10 +64,7 @@
 
 ;; `run-python` use `ipython` instead `python` as much as possible
 (when (executable-find "ipython")
-  (setq python-shell-interpreter "ipython"
-	python-shell-interpreter-args ""
-	python-shell-prompt-regexp "In \\[[0-9]+\\]: "
-	python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "))
+  (setq python-shell-interpreter "ipython"))
 
 (provide 'init-self)
 ;;; init-self.el ends here
