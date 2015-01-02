@@ -37,6 +37,7 @@
 (package-install 'ido-vertical-mode)
 (package-install 'org)
 (package-install 'yaml-mode)
+(package-install 'slime)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -102,6 +103,11 @@
 (add-hook 'yaml-mode-hook
 	  '(lambda ()
 	     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+;; The Superior Lisp Interaction Mode for Emacs
+(when (executable-find "sbcl")
+  (setq inferior-lisp-program "sbcl"))
+(setq slime-contribs '(slime-fancy))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
