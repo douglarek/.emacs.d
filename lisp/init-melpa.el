@@ -36,6 +36,7 @@
 (package-install 'window-number)
 (package-install 'ido-vertical-mode)
 (package-install 'org)
+(package-install 'yaml-mode)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -95,6 +96,12 @@
 ;; Makes ido-mode display vertically -> ido-vertical-mode.el
 (if ido-mode
     (ido-vertical-mode t))
+
+;; The emacs major mode for editing files in the YAML data serialization format.
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-hook 'yaml-mode-hook
+	  '(lambda ()
+	     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
