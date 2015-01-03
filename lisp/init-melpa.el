@@ -118,5 +118,8 @@
 			'check-parens
 			nil t))))
 
+;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it
+(smartparens-global-mode t)
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
