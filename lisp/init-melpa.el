@@ -38,6 +38,7 @@
 (package-install 'org)
 (package-install 'yaml-mode)
 (package-install 'slime)
+(package-install 'markdown-mode)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -108,6 +109,14 @@
 (when (executable-find "sbcl")
   (setq inferior-lisp-program "sbcl"))
 (setq slime-contribs '(slime-fancy))
+
+;; Emacs major mode for editing Markdown files
+(add-hook 'markdown-mode-hook
+	  (lambda ()
+	    (when buffer-file-name
+	      (add-hook 'after-save-hook
+			'check-parens
+			nil t))))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
