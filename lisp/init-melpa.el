@@ -39,6 +39,7 @@
 (package-install 'yaml-mode)
 (package-install 'slime)
 (package-install 'markdown-mode)
+(package-install 'geiser)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -120,6 +121,9 @@
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it
 (smartparens-global-mode t)
+
+;; Emacs and scheme talk to each other
+(setq geiser-impl-installed-implementations '(guile))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
