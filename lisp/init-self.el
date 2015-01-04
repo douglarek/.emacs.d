@@ -66,5 +66,8 @@
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython"))
 
+;; Turn on upcase region
+(put 'upcase-region 'disabled nil)
+
 (provide 'init-self)
 ;;; init-self.el ends here
