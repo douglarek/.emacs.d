@@ -71,5 +71,8 @@
 (setq save-place-file (concat user-emacs-directory "saved-places"))
 (setq-default save-place t)
 
+;; Turn on upcase region
+(put 'upcase-region 'disabled nil)
+
 (provide 'init-self)
 ;;; init-self.el ends here
