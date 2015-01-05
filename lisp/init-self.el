@@ -66,5 +66,10 @@
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython"))
 
+;; when you visit a file, point goes to the last place where it was when you previously visited the same file
+(require 'saveplace)
+(setq save-place-file (concat user-emacs-directory "saved-places"))
+(setq-default save-place t)
+
 (provide 'init-self)
 ;;; init-self.el ends here
