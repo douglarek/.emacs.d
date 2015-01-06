@@ -74,5 +74,8 @@
 ;; Turn on upcase region
 (put 'upcase-region 'disabled nil)
 
+;; turn on show-paren-mode
+(show-paren-mode t)
+
 (provide 'init-self)
 ;;; init-self.el ends here
