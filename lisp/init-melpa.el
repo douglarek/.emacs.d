@@ -126,5 +126,10 @@
 ;; Emacs and scheme talk to each other
 (setq geiser-impl-installed-implementations '(guile))
 
+;; A template system for Emacs
+(defvar snippets-directory (concat user-emacs-directory "snippets"))
+(setq yas-snippet-dirs '(snippets-directory))
+(yas-global-mode 1)
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
