@@ -132,5 +132,19 @@
 (setq yas-snippet-dirs '(snippets-directory))
 (yas-global-mode 1)
 
+;; Emacs Interface to Ack-like Tools
+(defvar ack-history nil
+  "History for the `ack` command.")
+
+(defun ack (command-args)
+  (interactive
+   (let ((ack-command "ack --nogroup --with-filename "))
+     (list (read-shell-command "Run ack (like this): "
+                               ack-command
+                               'ack-history))))
+  (let ((compilation-disable-input t))
+    (compilation-start (concat command-args " < " null-device)
+                       'grep-mode)))
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
