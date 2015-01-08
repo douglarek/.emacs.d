@@ -36,6 +36,7 @@
 (package-install 'slime)
 (package-install 'smartparens)
 (package-install 'smex)
+(package-install 'thingatpt+)
 (package-install 'web-mode)
 (package-install 'whitespace-cleanup-mode)
 (package-install 'window-number)
@@ -145,6 +146,28 @@
   (let ((compilation-disable-input t))
     (compilation-start (concat command-args " < " null-device)
                        'grep-mode)))
+
+;; Using ThingAtPoint and the Existing C-s C-w
+;; http://www.emacswiki.org/emacs/SearchAtPoint
+(defun my-isearch-yank-word-or-char-from-beginning ()
+  "Move to beginning of word before yanking word in isearch-mode."
+  (interactive)
+  ;; Making this work after a search string is entered by user
+  ;; is too hard to do, so work only when search string is empty.
+  (if (= 0 (length isearch-string))
+      (beginning-of-thing 'word))
+  (isearch-yank-word-or-char)
+  ;; Revert to 'isearch-yank-word-or-char for subsequent calls
+  (substitute-key-definition 'my-isearch-yank-word-or-char-from-beginning
+                 'isearch-yank-word-or-char
+                 isearch-mode-map))
+
+(add-hook 'isearch-mode-hook
+ (lambda ()
+   "Activate my customized Isearch word yank command."
+   (substitute-key-definition 'isearch-yank-word-or-char
+                  'my-isearch-yank-word-or-char-from-beginning
+                  isearch-mode-map)))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
