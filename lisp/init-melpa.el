@@ -42,6 +42,7 @@
 (package-install 'window-number)
 (package-install 'yaml-mode)
 (package-install 'yasnippet)
+(package-install 'whole-line-or-region)
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -168,6 +169,9 @@
    (substitute-key-definition 'isearch-yank-word-or-char
                   'my-isearch-yank-word-or-char-from-beginning
                   isearch-mode-map)))
+
+;; Operate on current line if region undefined
+(whole-line-or-region-mode t)
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
