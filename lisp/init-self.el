@@ -9,7 +9,7 @@
 ;; backup settings
 (defvar backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p backup-directory))
-        (make-directory backup-directory t))
+	(make-directory backup-directory t))
 (setq backup-directory-alist `(("." . ,backup-directory)))
 (setq make-backup-files t               ; backup of a file the first time it is saved.
       backup-by-copying t               ; don't clobber symlinks
@@ -26,20 +26,20 @@
 ;; auto-save settings
 (defvar auto-save-directory (concat user-emacs-directory "auto-save"))
 (if (not (file-exists-p auto-save-directory))
-        (make-directory auto-save-directory t))
+	(make-directory auto-save-directory t))
 
 (add-to-list 'auto-save-file-name-transforms
-             (list "\\(.+/\\)*\\(.*?\\)" (expand-file-name "\\2" auto-save-directory))
-             t)
+	     (list "\\(.+/\\)*\\(.*?\\)" (expand-file-name "\\2" auto-save-directory))
+	     t)
 
 ;; If you would prefer to have an empty response (hitting `RET`) or
 ;; any other input to be `no` and still require the full word `yes` to use this function as an alias for `yes-or-no-p`
 (defun my-yes-or-mumble-p (prompt)
    "PROMPT user with a yes-or-no question, but only test for yes."
    (if (string= "yes"
-                (downcase
-                 (read-from-minibuffer
-                  (concat prompt "(yes or no) "))))
+		(downcase
+		 (read-from-minibuffer
+		  (concat prompt "(yes or no) "))))
        t
      nil))
 
@@ -76,6 +76,9 @@
 
 ;; turn on show-paren-mode
 (show-paren-mode t)
+
+;; Whitespace cleanup before buffers are saved
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 (provide 'init-self)
 ;;; init-self.el ends here

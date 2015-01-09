@@ -56,8 +56,6 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-;; whitespace-cleanup -> In Emacs, intelligently call whitespace-cleanup on save
-
 ;; git-gutter -> Emacs port of GitGutter which is Sublime Text Plugin
 (global-git-gutter-mode t)
 
@@ -142,11 +140,11 @@
   (interactive
    (let ((ack-command "ack --nogroup --with-filename "))
      (list (read-shell-command "Run ack (like this): "
-                               ack-command
-                               'ack-history))))
+			       ack-command
+			       'ack-history))))
   (let ((compilation-disable-input t))
     (compilation-start (concat command-args " < " null-device)
-                       'grep-mode)))
+		       'grep-mode)))
 
 ;; Using ThingAtPoint and the Existing C-s C-w
 ;; http://www.emacswiki.org/emacs/SearchAtPoint
@@ -160,15 +158,15 @@
   (isearch-yank-word-or-char)
   ;; Revert to 'isearch-yank-word-or-char for subsequent calls
   (substitute-key-definition 'my-isearch-yank-word-or-char-from-beginning
-                 'isearch-yank-word-or-char
-                 isearch-mode-map))
+		 'isearch-yank-word-or-char
+		 isearch-mode-map))
 
 (add-hook 'isearch-mode-hook
  (lambda ()
    "Activate my customized Isearch word yank command."
    (substitute-key-definition 'isearch-yank-word-or-char
-                  'my-isearch-yank-word-or-char-from-beginning
-                  isearch-mode-map)))
+		  'my-isearch-yank-word-or-char-from-beginning
+		  isearch-mode-map)))
 
 ;; Operate on current line if region undefined
 (whole-line-or-region-mode t)
