@@ -24,6 +24,7 @@
 (package-install 'company)
 (package-install 'ein)
 (package-install 'flycheck)
+(package-install 'flycheck-rust)
 (package-install 'geiser)
 (package-install 'gist)
 (package-install 'git-gutter)
@@ -83,7 +84,9 @@
 ;; Flycheck support for pyflakes
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-check-syntax-automatically '(save))
-
+;; Better Rust/Cargo support for Flycheck
+(eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;; Python only
 (setq flycheck-python-flake8-executable (executable-find "flake8")
