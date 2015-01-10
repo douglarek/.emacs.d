@@ -37,6 +37,7 @@
 (package-install 'smartparens)
 (package-install 'smex)
 (package-install 'thingatpt+)
+(package-install 'toml-mode)
 (package-install 'web-mode)
 (package-install 'whitespace-cleanup-mode)
 (package-install 'window-number)
