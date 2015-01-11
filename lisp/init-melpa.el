@@ -34,6 +34,7 @@
 (package-install 'markdown-mode)
 (package-install 'magit)
 (package-install 'org)
+(package-install 'rust-mode)
 (package-install 'slime)
 (package-install 'smartparens)
 (package-install 'smex)
