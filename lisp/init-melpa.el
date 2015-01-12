@@ -33,6 +33,7 @@
 (package-install 'jedi)
 (package-install 'markdown-mode)
 (package-install 'magit)
+(package-install 'move-dup)
 (package-install 'org)
 (package-install 'rust-mode)
 (package-install 'slime)
