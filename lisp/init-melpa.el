@@ -20,33 +20,38 @@
 (setq package-load-list '(all))
 
 ;; Install all needed
-(package-install 'ack)
-(package-install 'company)
-(package-install 'ein)
-(package-install 'flycheck)
-(package-install 'flycheck-rust)
-(package-install 'geiser)
-(package-install 'gist)
-(package-install 'git-gutter)
-(package-install 'haskell-mode)
-(package-install 'ido-vertical-mode)
-(package-install 'jedi)
-(package-install 'markdown-mode)
-(package-install 'magit)
-(package-install 'move-dup)
-(package-install 'org)
-(package-install 'rust-mode)
-(package-install 'slime)
-(package-install 'smartparens)
-(package-install 'smex)
-(package-install 'thingatpt+)
-(package-install 'toml-mode)
-(package-install 'web-mode)
-(package-install 'whitespace-cleanup-mode)
-(package-install 'window-number)
-(package-install 'yaml-mode)
-(package-install 'yasnippet)
-(package-install 'whole-line-or-region)
+(defvar my-packages '(ack
+		      company
+		      ein
+		      flycheck
+		      flycheck-rust
+		      geiser
+		      gist
+		      git-gutter
+		      haskell-mode
+		      ido-vertical-mode
+		      jedi
+		      markdown-mode
+		      magit
+		      move-dup
+		      org
+		      rust-mode
+		      slime
+		      smartparens
+		      smex
+		      thingatpt+
+		      toml-mode
+		      web-mode
+		      whitespace-cleanup-mode
+		      window-number
+		      yaml-mode
+		      yasnippet
+		      whole-line-or-region)
+  )
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
 
 ;; jedi -> Python auto-completion for Emacs.
 (add-hook 'python-mode-hook 'jedi:setup)
