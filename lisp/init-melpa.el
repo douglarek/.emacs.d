@@ -142,7 +142,6 @@
 ;; A template system for Emacs
 (defvar snippets-directory (concat user-emacs-directory "snippets"))
 (setq yas-snippet-dirs '(snippets-directory))
-(yas-global-mode 1)
 
 ;; Emacs Interface to Ack-like Tools
 (defvar ack-history nil
