@@ -35,6 +35,7 @@
 		      magit
 		      move-dup
 		      org
+		      py-autopep8
 		      rust-mode
 		      slime
 		      smartparens
@@ -97,7 +98,7 @@
 
 ;; Python only
 (setq flycheck-python-flake8-executable (executable-find "flake8")
-      flycheck-flake8-maximum-line-length 120)
+      flycheck-flake8-maximum-line-length 100)
 
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
@@ -181,6 +182,10 @@
 
 ;; Operate on current line if region undefined
 (whole-line-or-region-mode t)
+
+;; Tidy up the current buffer according to Python’s PEP8
+(add-hook 'before-save-hook 'py-autopep8-before-save)
+(setq py-autopep8-options '("--max-line-length=100"))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
