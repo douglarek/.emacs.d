@@ -52,6 +52,7 @@
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
+    (package-refresh-contents)
     (package-install p)))
 
 ;; jedi -> Python auto-completion for Emacs.
