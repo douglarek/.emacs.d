@@ -91,5 +91,14 @@
 ;; Whitespace cleanup before buffers are saved
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
+;; HideShow hides balanced-expression code blocks and multi-line comment blocks
+(defvar hs-modes '(python-mode-hook
+		   rust-mode-hook
+		   )
+  )
+(dolist (m hs-modes)
+  (add-hook m 'hs-minor-mode)
+  )
+
 (provide 'init-self)
 ;;; init-self.el ends here
