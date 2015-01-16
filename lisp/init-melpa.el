@@ -42,6 +42,7 @@
 		      smex
 		      thingatpt+
 		      toml-mode
+		      undo-tree
 		      web-mode
 		      whitespace-cleanup-mode
 		      window-number
@@ -186,6 +187,9 @@
 ;; Tidy up the current buffer according to Python’s PEP8
 (add-hook 'before-save-hook 'py-autopep8-before-save)
 (setq py-autopep8-options '("--max-line-length=100"))
+
+;; Treat undo history as a tree
+(global-undo-tree-mode t)
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
