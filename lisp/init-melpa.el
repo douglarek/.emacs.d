@@ -26,11 +26,11 @@
 		      flycheck
 		      flycheck-rust
 		      geiser
-		      gist
 		      git-gutter
 		      haskell-mode
 		      ido-vertical-mode
 		      jedi
+		      jist
 		      markdown-mode
 		      magit
 		      move-dup
