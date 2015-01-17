@@ -24,6 +24,7 @@
 		      company
 		      ein
 		      flycheck
+		      flycheck-haskell
 		      flycheck-rust
 		      geiser
 		      git-gutter
@@ -90,6 +91,7 @@
 
 ;; Emacs mode for Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 
 ;; Flycheck support for pyflakes
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -101,6 +103,11 @@
 ;; Python only
 (setq flycheck-python-flake8-executable (executable-find "flake8")
       flycheck-flake8-maximum-line-length 100)
+
+;; Improved Haskell support for Flycheck
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
+
 
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
