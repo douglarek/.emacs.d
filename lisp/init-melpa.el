@@ -21,6 +21,7 @@
 
 ;; Install all needed
 (defvar my-packages '(ack
+		      cider
 		      company
 		      ein
 		      flycheck
@@ -107,7 +108,6 @@
 ;; Improved Haskell support for Flycheck
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
-
 
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
@@ -197,6 +197,17 @@
 
 ;; Treat undo history as a tree
 (global-undo-tree-mode t)
+
+
+;; CIDER is a Clojure IDE and REPL for Emacs
+(add-hook 'cider-mode-hook #'eldoc-mode)
+(setq nrepl-hide-special-buffers t)
+(setq cider-repl-wrap-history t)
+
+;; Use company-mode to enable auto-completion inside of source code and REPL buffers
+(add-hook 'cider-repl-mode-hook #'company-mode)
+(add-hook 'cider-mode-hook #'company-mode)
+
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
