@@ -21,6 +21,7 @@
 
 ;; Install all needed
 (defvar my-packages '(ack
+		      ace-jump-mode
 		      cider
 		      company
 		      ein
@@ -208,6 +209,9 @@
 (add-hook 'cider-repl-mode-hook #'company-mode)
 (add-hook 'cider-mode-hook #'company-mode)
 
+
+;; A quick cursor jump mode for emacs
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
