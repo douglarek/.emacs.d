@@ -38,6 +38,7 @@
 		      magit
 		      move-dup
 		      org
+		      paradox
 		      py-autopep8
 		      rust-mode
 		      slime
