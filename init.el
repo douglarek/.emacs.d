@@ -12,4 +12,7 @@
   (require 'init-self)
   (require 'init-melpa))
 
+(custom-set-variables
+ '(paradox-github-token t))
+
 ;;; init.el ends here
