@@ -214,5 +214,11 @@
 ;; A quick cursor jump mode for emacs
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
+
+;; Project for modernizing Emacs' Package Menu
+(eval-after-load 'paradox
+  '(custom-set-variables
+    '(paradox-github-token t)))
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
