@@ -227,5 +227,15 @@
   '(custom-set-variables
     '(paradox-github-token t)))
 
+
+;; Org: an Emacs Mode for Notes, Planning, and Authoring
+(setq org-tag-alist '(("git" . ?g) ("@home" . ?h) ("python" . ?p) ("@work" . ?w)))
+(setq org-todo-keywords
+      '((sequence "TODO" "DOING" "|" "DONE" "DELEGATED")))
+(setq org-todo-keyword-faces
+      '(("DOING" . "yellow")))
+
+(setq org-log-done 'time)
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
