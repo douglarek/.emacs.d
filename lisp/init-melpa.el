@@ -210,8 +210,10 @@
 
 ;; CIDER is a Clojure IDE and REPL for Emacs
 (add-hook 'cider-mode-hook #'eldoc-mode)
-(setq nrepl-hide-special-buffers t)
-(setq cider-repl-wrap-history t)
+(setq nrepl-hide-special-buffers t
+      cider-repl-pop-to-buffer-on-connect nil
+      cider-popup-stacktraces nil
+      cider-repl-popup-stacktraces t)
 
 ;; Use company-mode to enable auto-completion inside of source code and REPL buffers
 (add-hook 'cider-repl-mode-hook #'company-mode)
