@@ -239,5 +239,13 @@
 
 (setq org-log-done 'time)
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
+
+(setq org-src-tab-acts-natively t
+      org-src-fontify-natively t
+      org-confirm-babel-evaluate nil)
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
