@@ -59,9 +59,6 @@
 ;; turn on column numbers
 (setq column-number-mode t)
 
-;; enable org indent on startup
-(setq org-startup-indented t)
-
 ;; `run-python` use `ipython` instead `python` as much as possible
 (when (executable-find "ipython")
   (setq

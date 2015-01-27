@@ -32,6 +32,7 @@
 		      geiser
 		      git-gutter
 		      haskell-mode
+		      htmlize
 		      ido-vertical-mode
 		      jedi
 		      jist
@@ -243,9 +244,13 @@
  'org-babel-load-languages
  '((python . t)))
 
-(setq org-src-tab-acts-natively t
+(setq org-completion-use-ido t
+      org-confirm-babel-evaluate nil
+      org-html-validation-link nil
+      org-log-done 'time
+      org-src-tab-acts-natively t
       org-src-fontify-natively t
-      org-confirm-babel-evaluate nil)
+      org-startup-indented t)
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
