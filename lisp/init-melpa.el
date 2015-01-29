@@ -24,6 +24,7 @@
 		      ace-jump-mode
 		      cider
 		      company
+		      drag-stuff
 		      ein
 		      flycheck
 		      flycheck-haskell
@@ -251,6 +252,10 @@
       org-src-tab-acts-natively t
       org-src-fontify-natively t
       org-startup-indented t)
+
+
+;;Drag stuff around in Emacs
+(drag-stuff-mode t)
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
