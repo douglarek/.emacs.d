@@ -50,6 +50,7 @@
 		      thingatpt+
 		      toml-mode
 		      undo-tree
+		      visual-regexp
 		      web-mode
 		      whitespace-cleanup-mode
 		      window-number
