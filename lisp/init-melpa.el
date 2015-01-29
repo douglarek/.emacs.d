@@ -32,6 +32,7 @@
 		      flycheck-rust
 		      geiser
 		      git-gutter
+		      git-messenger
 		      haskell-mode
 		      htmlize
 		      ido-vertical-mode
@@ -257,6 +258,10 @@
 
 ;;Drag stuff around in Emacs
 (drag-stuff-mode t)
+
+
+;;Emacs Port of git-messenger.vim
+(add-hook 'git-messenger:popup-buffer-hook 'magit-commit-mode)
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
