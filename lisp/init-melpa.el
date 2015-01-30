@@ -23,6 +23,7 @@
 (defvar my-packages '(ack
 		      ace-jump-mode
 		      cider
+		      clj-refactor
 		      company
 		      drag-stuff
 		      ein
@@ -269,6 +270,14 @@
 (venv-initialize-interactive-shells)
 (venv-initialize-eshell)
 (setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
+
+
+;; A collection of simple Clojure refactoring functions for Emacs
+(add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
+(add-hook 'cider-connected-hook #'cljr-update-artifact-cache)
+(add-hook 'cider-connected-hook #'cljr-warm-ast-cache)
+(setq cljr-sort-comparator 'cljr--semantic-comparator)
+(cljr-add-keybindings-with-prefix "C-c C-m")
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
