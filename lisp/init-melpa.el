@@ -167,6 +167,16 @@
 (defvar snippets-directory (concat user-emacs-directory "snippets"))
 (setq yas-snippet-dirs '(snippets-directory))
 
+;; Reload all snippets since snippets are not auto loaded when yas/minor-mode on
+(defun yas/enable-snippets ()
+  (progn
+    (yas/minor-mode 1)
+    (yas/reload-all)))
+
+; Enable yas for Python
+(add-hook 'python-mode-hook 'yas/enable-snippets)
+
+
 ;; Emacs Interface to Ack-like Tools
 (defvar ack-history nil
   "History for the `ack` command.")
