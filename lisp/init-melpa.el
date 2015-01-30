@@ -164,8 +164,17 @@
 (setq geiser-impl-installed-implementations '(guile))
 
 ;; A template system for Emacs
-(defvar snippets-directory (concat user-emacs-directory "snippets"))
-(setq yas-snippet-dirs '(snippets-directory))
+(defun joindirs (root &rest dirs)
+  (if (not dirs)
+      root
+    (apply 'joindirs
+	   (expand-file-name (car dirs) root)
+	   (cdr dirs))))
+
+(defvar clojure-snippets (joindirs user-emacs-directory "snippets" "clojure-snippets"))
+(defvar yasnippet-snippets (joindirs user-emacs-directory "snippets" "yasnippet-snippets"))
+
+(setq yas-snippet-dirs '(clojure-snippets yasnippet-snippets))
 
 ;; Reload all snippets since snippets are not auto loaded when yas/minor-mode on
 (defun yas/enable-snippets ()
