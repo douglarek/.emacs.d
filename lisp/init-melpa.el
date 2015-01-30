@@ -52,6 +52,7 @@
 		      toml-mode
 		      undo-tree
 		      visual-regexp
+		      virtualenvwrapper
 		      web-mode
 		      whitespace-cleanup-mode
 		      window-number
@@ -256,12 +257,18 @@
       org-startup-indented t)
 
 
-;;Drag stuff around in Emacs
+;; Drag stuff around in Emacs
 (drag-stuff-mode t)
 
 
-;;Emacs Port of git-messenger.vim
+;; Emacs Port of git-messenger.vim
 (add-hook 'git-messenger:popup-buffer-hook 'magit-commit-mode)
+
+
+;; virtualenv tool for emacs
+(venv-initialize-interactive-shells)
+(venv-initialize-eshell)
+(setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
