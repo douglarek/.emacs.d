@@ -172,9 +172,10 @@
 	   (cdr dirs))))
 
 (defvar clojure-snippets (joindirs user-emacs-directory "snippets" "clojure-snippets"))
+(defvar rust-snippets (joindirs user-emacs-directory "snippets" "rust-snippets" "snippets"))
 (defvar yasnippet-snippets (joindirs user-emacs-directory "snippets" "yasnippet-snippets"))
 
-(setq yas-snippet-dirs '(clojure-snippets yasnippet-snippets))
+(setq yas-snippet-dirs '(clojure-snippets rust-snippets yasnippet-snippets))
 
 ;; Reload all snippets since snippets are not auto loaded when yas/minor-mode on
 (defun yas/enable-snippets ()
