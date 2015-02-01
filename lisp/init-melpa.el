@@ -184,7 +184,9 @@
     (yas/reload-all)))
 
 ; Enable yas for Python
+(add-hook 'clojure-mode-hook 'yas/enable-snippets)
 (add-hook 'python-mode-hook 'yas/enable-snippets)
+(add-hook 'rust-mode-hook 'yas/enable-snippets)
 
 
 ;; Emacs Interface to Ack-like Tools
