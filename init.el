@@ -13,3 +13,4 @@
   (require 'init-melpa))
 
 ;;; init.el ends here
+(put 'downcase-region 'disabled nil)
