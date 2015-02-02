@@ -259,7 +259,12 @@
 
 
 ;; Org: an Emacs Mode for Notes, Planning, and Authoring
-(setq org-tag-alist '(("git" . ?g) ("@home" . ?h) ("python" . ?p) ("@work" . ?w)))
+(setq org-tag-alist '(("clojure" . ?c)
+		      ("git" . ?g)
+		      ("@home" . ?h)
+		      ("python" . ?p)
+		      ("rust" . ?r)
+		      ("@work" . ?w)))
 (setq org-todo-keywords
       '((sequence "TODO" "DOING" "|" "DONE" "DELEGATED")))
 (setq org-todo-keyword-faces
