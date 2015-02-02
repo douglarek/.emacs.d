@@ -45,6 +45,7 @@
 		      org
 		      paradox
 		      py-autopep8
+		      py-isort
 		      rust-mode
 		      slime
 		      smartparens
@@ -305,6 +306,11 @@
 (add-hook 'cider-connected-hook #'cljr-warm-ast-cache)
 (setq cljr-sort-comparator 'cljr--semantic-comparator)
 (cljr-add-keybindings-with-prefix "C-c C-m")
+
+
+;; Integrates isort into Emacs
+(add-hook 'before-save-hook 'py-isort-before-save)
+
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
