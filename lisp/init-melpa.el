@@ -27,6 +27,7 @@
 		      company
 		      drag-stuff
 		      ein
+		      flx-ido
 		      flycheck
 		      flycheck-haskell
 		      flycheck-pos-tip
@@ -44,6 +45,7 @@
 		      move-dup
 		      org
 		      paradox
+		      projectile
 		      py-autopep8
 		      py-isort
 		      rust-mode
@@ -305,6 +307,18 @@
 
 ;; Integrates isort into Emacs
 (add-hook 'before-save-hook 'py-isort-before-save)
+
+
+;; Project Interaction Library for Emacs
+(setq projectile-enable-caching t)
+(add-hook 'python-mode-hook 'projectile-mode)
+
+;; Fuzzy matching for Emacs
+(flx-ido-mode t)
+
+;; disable ido faces to see flx highlights
+(setq ido-enable-flex-matching t)
+(setq flx-ido-use-faces nil)
 
 
 (provide 'init-melpa)

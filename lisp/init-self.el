@@ -54,6 +54,7 @@
 ;; enable ido
 (ido-mode t)
 (setq ido-enable-flex-matching t
+      ido-everywhere t
       ido-use-virtual-buffers t)
 
 ;; turn on column numbers
