@@ -316,7 +316,7 @@
 
 ;; Project Interaction Library for Emacs
 (setq projectile-enable-caching t)
-(add-hook 'python-mode-hook 'projectile-mode)
+(projectile-global-mode)
 
 ;; Fuzzy matching for Emacs
 (flx-ido-mode t)
