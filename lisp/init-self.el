@@ -98,5 +98,10 @@
   (add-hook m 'hs-minor-mode)
   )
 
+
+;; Turn on downcase region
+(put 'downcase-region 'disabled nil)
+
+
 (provide 'init-self)
 ;;; init-self.el ends here
