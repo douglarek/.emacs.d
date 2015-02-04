@@ -315,7 +315,6 @@
 
 
 ;; Project Interaction Library for Emacs
-(setq projectile-enable-caching t)
 (projectile-global-mode)
 
 ;; Fuzzy matching for Emacs
