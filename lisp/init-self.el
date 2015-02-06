@@ -103,5 +103,10 @@
 (put 'downcase-region 'disabled nil)
 
 
+;; Emacs GUI font settings
+(when (and (display-graphic-p) (eq system-type 'darwin))
+  (set-frame-font "Menlo 18"))
+
+
 (provide 'init-self)
 ;;; init-self.el ends here
