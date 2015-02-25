@@ -105,6 +105,7 @@
 ;; Emacs mode for Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(setq haskell-stylish-on-save t)
 
 ;; Flycheck support for pyflakes
 (add-hook 'after-init-hook #'global-flycheck-mode)
