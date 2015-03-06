@@ -24,6 +24,7 @@
 		      ace-jump-mode
 		      cider
 		      clj-refactor
+		      coffee-mode
 		      company
 		      drag-stuff
 		      ein
@@ -52,6 +53,7 @@
 		      slime
 		      smartparens
 		      smex
+		      sourcemap
 		      thingatpt+
 		      toml-mode
 		      undo-tree
@@ -324,6 +326,32 @@
 ;; disable ido faces to see flx highlights
 (setq ido-enable-flex-matching t)
 (setq flx-ido-use-faces nil)
+
+
+;; Emacs Major Mode for CoffeeScript
+(setq coffee-args-compile '("-c" "-m")) ;; generating sourcemap
+(add-hook 'coffee-after-compile-hook 'sourcemap-goto-corresponding-point)
+
+;; If you want to remove sourcemap file after jumping corresponding point
+(defun my/coffee-after-compile-hook (props)
+  (sourcemap-goto-corresponding-point props)
+  (delete-file (plist-get props :sourcemap)))
+(add-hook 'coffee-after-compile-hook 'my/coffee-after-compile-hook)
+
+(eval-after-load 'coffee-mode
+  '(custom-set-variables
+    '(coffee-tab-width 2)
+    '(coffee-args-compile '("-c" "--bare"))))
+
+
+;; Emacs WhiteSpace mode
+(global-whitespace-mode t)
+
+;; automatically clean up bad whitespace
+(setq whitespace-action '(auto-cleanup))
+
+;; only show bad whitespace
+(setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
 
 
 (provide 'init-melpa)
