@@ -28,6 +28,7 @@
 		      company
 		      drag-stuff
 		      ein
+		      ensime
 		      flx-ido
 		      flycheck
 		      flycheck-haskell
@@ -46,10 +47,13 @@
 		      move-dup
 		      org
 		      paradox
+		      popup
 		      projectile
 		      py-autopep8
 		      py-isort
 		      rust-mode
+		      scala-mode2
+		      scala-outline-popup
 		      slime
 		      smartparens
 		      smex
@@ -352,6 +356,34 @@
 
 ;; only show bad whitespace
 (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
+
+
+;; A new scala-mode for emacs24
+(add-hook 'scala-mode-hook '(lambda ()
+			      (local-set-key (kbd "RET") 'newline-and-indent)
+			      (local-set-key (kbd "<backtab>") 'scala-indent:indent-with-reluctant-strategy)
+			      ))
+(add-hook 'scala-mode-hook '(lambda ()
+			      ; (require 'whitespace)
+			      (make-local-variable 'before-save-hook)
+			      (add-hook 'before-save-hook 'whitespace-cleanup)
+			      (whitespace-mode)
+			      ))
+
+;; For complex scala files
+(setq max-lisp-eval-depth 50000)
+(setq max-specpdl-size 5000)
+
+
+;; Scala file summary popup
+(require 'popup)
+(define-key popup-isearch-keymap (kbd "C-e") 'popup-isearch-cancel)
+(require 'scala-outline-popup)
+(setq scala-outline-popup-select 'closest)
+
+
+;; ENhanced Scala Interaction Mode for Emacs
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 
 (provide 'init-melpa)
