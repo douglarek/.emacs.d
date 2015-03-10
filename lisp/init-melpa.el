@@ -26,6 +26,7 @@
 		      clj-refactor
 		      coffee-mode
 		      company
+		      dockerfile-mode
 		      drag-stuff
 		      ein
 		      ensime
