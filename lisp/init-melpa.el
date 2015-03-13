@@ -161,12 +161,22 @@
 (setq slime-contribs '(slime-fancy))
 
 ;; Emacs major mode for editing Markdown files
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
 (add-hook 'markdown-mode-hook
 	  (lambda ()
 	    (when buffer-file-name
 	      (add-hook 'after-save-hook
 			'check-parens
 			nil t))))
+
+(defun markdown-custom ()
+  "markdown-mode-hook"
+  (setq markdown-command "markdown | smartypants"))
+(add-hook 'markdown-mode-hook '(lambda() (markdown-custom)))
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it
 (smartparens-global-mode t)
