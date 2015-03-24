@@ -32,13 +32,13 @@
 		      ensime
 		      flx-ido
 		      flycheck
-		      flycheck-haskell
 		      flycheck-pos-tip
 		      flycheck-rust
 		      geiser
 		      git-gutter
 		      git-messenger
 		      haskell-mode
+		      flycheck-haskell
 		      htmlize
 		      ido-vertical-mode
 		      jedi
