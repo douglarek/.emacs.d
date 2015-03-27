@@ -330,10 +330,6 @@
 (cljr-add-keybindings-with-prefix "C-c C-m")
 
 
-;; Integrates isort into Emacs
-(add-hook 'before-save-hook 'py-isort-before-save)
-
-
 ;; Project Interaction Library for Emacs
 (projectile-global-mode)
 
