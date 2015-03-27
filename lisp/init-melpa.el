@@ -46,6 +46,7 @@
 		      markdown-mode
 		      magit
 		      move-dup
+		      multiple-cursors
 		      org
 		      paradox
 		      popup
@@ -393,6 +394,10 @@
 
 ;; ENhanced Scala Interaction Mode for Emacs
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+
+;; Multiple cursors for emacs
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 
 
 (provide 'init-melpa)
