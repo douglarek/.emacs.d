@@ -62,6 +62,7 @@
 		      sourcemap
 		      thingatpt+
 		      toml-mode
+		      transpose-mark
 		      undo-tree
 		      visual-regexp
 		      virtualenvwrapper
