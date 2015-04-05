@@ -26,6 +26,7 @@
 		      clj-refactor
 		      coffee-mode
 		      company
+		      discover-my-major
 		      dockerfile-mode
 		      drag-stuff
 		      ein
