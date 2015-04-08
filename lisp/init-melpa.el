@@ -31,7 +31,6 @@
 		      drag-stuff
 		      ein
 		      ensime
-		      evil
 		      flx-ido
 		      flycheck
 		      flycheck-pos-tip
@@ -401,16 +400,6 @@
 
 ;; Multiple cursors for emacs
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-
-
-;; Evil is an extensible vi layer for Emacs
-(evil-mode 1)
-
-;; remove all keybindings from insert-state keymap, use emacs-state when editing
-(setcdr evil-insert-state-map nil)
-
-;; ESC to switch back normal-state
-(define-key evil-insert-state-map [escape] 'evil-normal-state)
 
 
 (provide 'init-melpa)
