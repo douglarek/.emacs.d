@@ -29,6 +29,7 @@
 		      discover-my-major
 		      dockerfile-mode
 		      drag-stuff
+		      edts
 		      ein
 		      ensime
 		      flx-ido
@@ -400,6 +401,12 @@
 
 ;; Multiple cursors for emacs
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+
+
+;; Erlang Development Tool Suite
+(add-hook 'after-init-hook 'my-after-init-hook)
+(defun my-after-init-hook ()
+    (require 'edts-start))
 
 
 (provide 'init-melpa)
