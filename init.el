@@ -10,6 +10,7 @@
 
 (when (>= emacs-major-version 24)
   (require 'init-self)
+  (require 'init-site-lisp)
   (require 'init-melpa))
 
 ;;; init.el ends here
