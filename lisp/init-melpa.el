@@ -315,6 +315,7 @@
 
 ;; Emacs Port of git-messenger.vim
 (add-hook 'git-messenger:popup-buffer-hook 'magit-commit-mode)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 
 ;; virtualenv tool for emacs
