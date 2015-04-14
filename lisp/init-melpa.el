@@ -53,6 +53,7 @@
 		      paradox
 		      popup
 		      projectile
+		      py-autopep8
 		      py-isort
 		      rust-mode
 		      scala-mode2
@@ -249,10 +250,12 @@
 		  'my-isearch-yank-word-or-char-from-beginning
 		  isearch-mode-map)))
 
-
 ;; Operate on current line if region undefined
 (whole-line-or-region-mode t)
 
+;; Tidy up the current buffer according to Python’s PEP8
+(add-hook 'before-save-hook 'py-autopep8-before-save)
+(setq py-autopep8-options '("--max-line-length=100"))
 
 ;; Treat undo history as a tree
 (global-undo-tree-mode t)
