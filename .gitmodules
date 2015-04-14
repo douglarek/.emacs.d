@@ -1,6 +1,3 @@
 [submodule "snippets"]
 	path = snippets
 	url = https://github.com/douglarek/snippets.git
-[submodule "site-lisp/py-yapf.el"]
-	path = site-lisp/py-yapf.el
-	url = https://github.com/paetzke/py-yapf.el.git
