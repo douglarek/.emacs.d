@@ -65,6 +65,7 @@
 		      thingatpt+
 		      toml-mode
 		      transpose-mark
+		      tss
 		      undo-tree
 		      visual-regexp
 		      virtualenvwrapper
