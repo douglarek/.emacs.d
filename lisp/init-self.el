@@ -108,5 +108,9 @@
   (set-frame-font "Menlo 18"))
 
 
+;; Save Emacs sessions
+(desktop-save-mode 1)
+
+
 (provide 'init-self)
 ;;; init-self.el ends here

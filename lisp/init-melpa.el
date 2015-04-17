@@ -202,17 +202,7 @@
 
 (setq yas-snippet-dirs '(clojure-snippets rust-snippets yasnippet-snippets))
 
-;; Reload all snippets since snippets are not auto loaded when yas/minor-mode on
-(defun yas/enable-snippets ()
-  (progn
-    (yas/minor-mode 1)
-    (yas/reload-all)))
-
-; Enable yas for Python
-(add-hook 'clojure-mode-hook 'yas/enable-snippets)
-(add-hook 'python-mode-hook 'yas/enable-snippets)
-(add-hook 'rust-mode-hook 'yas/enable-snippets)
-
+(yas-global-mode 1)
 
 ;; Emacs Interface to Ack-like Tools
 (defvar ack-history nil
