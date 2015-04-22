@@ -246,7 +246,7 @@
 (whole-line-or-region-mode t)
 
 ;; Tidy up the current buffer according to Python’s PEP8
-(add-hook 'before-save-hook 'py-autopep8-before-save)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 (setq py-autopep8-options '("--max-line-length=100"))
 
 ;; Treat undo history as a tree
