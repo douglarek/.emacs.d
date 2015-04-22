@@ -62,6 +62,7 @@
 		      smartparens
 		      smex
 		      sourcemap
+		      sx
 		      thingatpt+
 		      toml-mode
 		      transpose-mark
