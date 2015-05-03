@@ -22,6 +22,7 @@
 ;; Install all needed
 (defvar my-packages '(ack
 		      ace-jump-mode
+		      bing-dict
 		      cider
 		      clj-refactor
 		      coffee-mode
