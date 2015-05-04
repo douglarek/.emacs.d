@@ -107,6 +107,18 @@
 (when (and (display-graphic-p) (eq system-type 'darwin))
   (set-frame-font "Menlo 18"))
 
+(defun read-lines (filePath)
+  "Return a list of lines of a file at FILEPATH."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (split-string (buffer-string) "\n" t)))
+
+(let ((ea (read-lines (concat user-emacs-directory ".erc-auth"))))
+  (when (not (= (length ea) 0))
+  (setq erc-nick (car ea)))
+  ;; (setq erc-password (nth 1 ea)))
+  )
+
 
 (provide 'init-self)
 ;;; init-self.el ends here
