@@ -109,9 +109,11 @@
 
 (defun read-lines (filePath)
   "Return a list of lines of a file at FILEPATH."
-  (with-temp-buffer
-    (insert-file-contents filePath)
-    (split-string (buffer-string) "\n" t)))
+  (if (file-exists-p filePath)
+      (with-temp-buffer
+	(insert-file-contents filePath)
+	(split-string (buffer-string) "\n" t))
+    nil))
 
 (let ((ea (read-lines (concat user-emacs-directory ".erc-auth"))))
   (when (not (= (length ea) 0))
