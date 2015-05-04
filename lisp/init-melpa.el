@@ -56,6 +56,7 @@
 		      projectile
 		      py-autopep8
 		      py-isort
+		      restclient
 		      rust-mode
 		      scala-mode2
 		      scala-outline-popup
