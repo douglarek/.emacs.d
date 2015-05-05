@@ -207,8 +207,6 @@
 
 (setq yas-snippet-dirs '(clojure-snippets rust-snippets yasnippet-snippets))
 
-(yas-global-mode 1)
-
 ;; Emacs Interface to Ack-like Tools
 (defvar ack-history nil
   "History for the `ack` command.")
@@ -314,12 +312,6 @@
 ;; Emacs Port of git-messenger.vim
 (add-hook 'git-messenger:popup-buffer-hook 'magit-commit-mode)
 (setq magit-last-seen-setup-instructions "1.4.0")
-
-
-;; virtualenv tool for emacs
-(venv-initialize-interactive-shells)
-(venv-initialize-eshell)
-(setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
 
 
 ;; A collection of simple Clojure refactoring functions for Emacs
