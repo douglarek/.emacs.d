@@ -46,6 +46,7 @@
 		      ido-vertical-mode
 		      jedi
 		      jist
+		      lua-mode
 		      markdown-mode
 		      magit
 		      move-dup
