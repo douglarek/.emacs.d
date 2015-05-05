@@ -400,7 +400,7 @@
 
 
 ;; Erlang Development Tool Suite
-(add-hook 'after-init-hook 'my-after-init-hook)
+(add-hook 'erlang-mode-hook 'my-after-init-hook)
 (defun my-after-init-hook ()
   (require 'edts-start))
 
