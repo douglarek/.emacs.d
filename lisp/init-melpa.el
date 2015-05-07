@@ -166,7 +166,7 @@
 
 ;; The Superior Lisp Interaction Mode for Emacs
 (when (executable-find "sbcl")
-  (setq inferior-lisp-program "sbcl"))
+  (setq inferior-lisp-program "sbcl --noinform --no-linedit"))
 (setq slime-contribs '(slime-fancy))
 
 (add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
