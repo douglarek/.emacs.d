@@ -22,6 +22,7 @@
 ;; Install all needed
 (defvar my-packages '(ack
 		      ace-jump-mode
+		      ace-jump-buffer
 		      bing-dict
 		      cider
 		      clj-refactor
@@ -434,6 +435,10 @@
 
 ;; Do setting recommemded configuration
 (tss-config-default)
+
+
+;; Super fast Emacs buffer switching extension for ace-jump-mode
+(global-set-key (kbd "M-g b") 'ace-jump-buffer)
 
 
 (provide 'init-melpa)
