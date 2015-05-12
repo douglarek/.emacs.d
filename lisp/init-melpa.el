@@ -52,7 +52,6 @@
 		      magit
 		      move-dup
 		      multiple-cursors
-		      org
 		      paradox
 		      popup
 		      projectile
