@@ -34,6 +34,7 @@
 		      edts
 		      ein
 		      ensime
+		      exec-path-from-shell
 		      flx-ido
 		      flycheck
 		      flycheck-pos-tip
@@ -50,6 +51,7 @@
 		      lua-mode
 		      markdown-mode
 		      magit
+		      monokai-theme
 		      move-dup
 		      multiple-cursors
 		      paradox
@@ -448,6 +450,11 @@
 ;; Super fast Emacs buffer switching extension for ace-jump-mode
 (global-set-key (kbd "M-g b") 'ace-jump-buffer)
 
+
+;;
+(when (memq window-system '(mac ns))
+  (load-theme 'monokai t)
+  (exec-path-from-shell-initialize))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
