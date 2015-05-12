@@ -105,6 +105,7 @@
 
 ;; Emacs GUI font settings
 (when (and (display-graphic-p) (eq system-type 'darwin))
+  (scroll-bar-mode -1)
   (set-frame-font "Menlo 18"))
 
 (defun read-lines (filePath)
