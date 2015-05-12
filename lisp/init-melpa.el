@@ -102,21 +102,30 @@
 (global-git-gutter-mode t)
 
 ;; web-mode -> web template editing mode for Emacs
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.xml?\\'" . web-mode))
-(setq web-mode-engines-alist
-      '(("php"    . "\\.phtml\\'")
-	("blade"  . "\\.blade\\."))
-)
+
+(defun my-web-mode-hook ()
+  "Mode hook for web development."
+  (require 'web-mode)
+  ; html indention
+  (setq web-mode-markup-indent-offset 2)
+  ; css indention
+  (setq web-mode-css-indent-offset 2)
+  ; script indention
+  (setq web-mode-code-indent-offset 2)
+  ; tag attributes indention
+  (setq web-mode-attr-indent-offset 2)
+  ; CSS colorization
+  (setq web-mode-enable-css-colorization t)
+  ; Autopairing
+  (setq web-mode-enable-auto-closing t)
+  (setq web-mode-enable-auto-pairing t)
+  (setq-default indent-tabs-mode nil))
+
+(add-hook 'web-mode-hook 'my-web-mode-hook)
 
 ;; Emacs mode for Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
