@@ -46,6 +46,7 @@
 		      flycheck-haskell
 		      htmlize
 		      ido-vertical-mode
+		      imenu-anywhere
 		      jedi
 		      jist
 		      lua-mode
