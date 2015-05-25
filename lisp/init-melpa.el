@@ -42,6 +42,7 @@
 		      geiser
 		      git-gutter
 		      git-messenger
+		      git-timemachine
 		      haskell-mode
 		      flycheck-haskell
 		      htmlize
