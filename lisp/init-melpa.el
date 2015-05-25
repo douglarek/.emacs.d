@@ -452,10 +452,14 @@
 (global-set-key (kbd "M-g b") 'ace-jump-buffer)
 
 
-;;
+;; Emacs GUI settings for osx
 (when (memq window-system '(mac ns))
   (load-theme 'monokai t)
   (exec-path-from-shell-initialize))
+
+
+;; Rust mode
+(add-hook 'rust-mode-hook '(lambda () (define-key rust-mode-map (kbd "C-c C-j") 'imenu)))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
