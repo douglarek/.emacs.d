@@ -74,6 +74,7 @@
 		      toml-mode
 		      transpose-mark
 		      tss
+		      tuareg
 		      undo-tree
 		      visual-regexp
 		      virtualenvwrapper
@@ -461,6 +462,20 @@
 
 ;; Rust mode
 (add-hook 'rust-mode-hook '(lambda () (define-key rust-mode-map (kbd "C-c C-j") 'imenu)))
+
+
+;; Emacs OCaml mode
+;; Indent `=' like a standard keyword.
+(setq tuareg-lazy-= t)
+;; Indent [({ like standard keywords.
+(setq tuareg-lazy-paren t)
+;; No indentation after `in' keywords.
+(setq tuareg-in-indent 0)
+
+(add-hook 'tuareg-mode-hook
+	  ;; Turn on auto-fill minor mode.
+	  (lambda () (auto-fill-mode 1)))
+
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
