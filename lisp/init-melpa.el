@@ -460,8 +460,9 @@
   (exec-path-from-shell-initialize))
 
 
-;; Rust mode
-(add-hook 'rust-mode-hook '(lambda () (define-key rust-mode-map (kbd "C-c C-j") 'imenu)))
+;; Imenu mode for Rust, Python, ...
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map (kbd "C-c C-j") 'imenu-anywhere)))
+(global-set-key (kbd "C-c C-j") 'imenu-anywhere)
 
 
 ;; Emacs OCaml mode
