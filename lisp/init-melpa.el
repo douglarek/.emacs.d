@@ -48,6 +48,7 @@
 		      htmlize
 		      ido-vertical-mode
 		      imenu-anywhere
+		      javadoc-lookup
 		      jedi
 		      jist
 		      lua-mode
