@@ -57,6 +57,13 @@
       ido-everywhere t
       ido-use-virtual-buffers t)
 
+(defun bind-ido-keys ()
+  "Keybindings for ido mode."
+  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
+
+(add-hook 'ido-setup-hook #'bind-ido-keys)
+
 ;; turn on column numbers
 (setq column-number-mode t)
 
