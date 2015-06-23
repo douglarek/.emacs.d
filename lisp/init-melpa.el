@@ -246,6 +246,13 @@
 
 (setq yas-snippet-dirs '(clojure-snippets rust-snippets yasnippet-snippets))
 
+(require 'yasnippet)
+(yas-reload-all)
+(dolist (hook '(java-mode-hook clojure-mode-hook))
+  (add-hook hook #'yas-minor-mode)
+  )
+
+
 ;; Emacs Interface to Ack-like Tools
 (defvar ack-history nil
   "History for the `ack` command.")
