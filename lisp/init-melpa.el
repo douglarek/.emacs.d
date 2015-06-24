@@ -244,8 +244,9 @@
 (defvar clojure-snippets (joindirs user-emacs-directory "snippets" "clojure-snippets"))
 (defvar rust-snippets (joindirs user-emacs-directory "snippets" "rust-snippets" "snippets"))
 (defvar yasnippet-snippets (joindirs user-emacs-directory "snippets" "yasnippet-snippets"))
+(defvar my-snippets (joindirs user-emacs-directory "snippets" "my-snippets"))
 
-(setq yas-snippet-dirs '(clojure-snippets rust-snippets yasnippet-snippets))
+(setq yas-snippet-dirs '(clojure-snippets rust-snippets yasnippet-snippets my-snippets))
 
 (require 'yasnippet)
 (yas-reload-all)
