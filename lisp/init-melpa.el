@@ -43,6 +43,7 @@
 		      git-gutter
 		      git-messenger
 		      git-timemachine
+		      groovy-mode
 		      haskell-mode
 		      flycheck-haskell
 		      htmlize
