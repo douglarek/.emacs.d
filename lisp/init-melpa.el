@@ -28,6 +28,7 @@
 		      clj-refactor
 		      coffee-mode
 		      company
+		      dash-at-point
 		      discover-my-major
 		      dockerfile-mode
 		      drag-stuff
@@ -486,6 +487,11 @@
 (add-hook 'tuareg-mode-hook
 	  ;; Turn on auto-fill minor mode.
 	  (lambda () (auto-fill-mode 1)))
+
+
+;; A emacs lisp for searching the word at point with Dash
+(add-hook 'java-mode-hook
+		    (lambda () (setq dash-at-point-docset "java")))
 
 
 (provide 'init-melpa)
