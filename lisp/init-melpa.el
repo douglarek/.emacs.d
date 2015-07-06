@@ -149,7 +149,7 @@
 
 ;; Python only
 (setq flycheck-python-flake8-executable (executable-find "flake8")
-      flycheck-flake8-maximum-line-length 100)
+      flycheck-flake8-maximum-line-length 120)
 
 ;; Improved Haskell support for Flycheck
 (eval-after-load 'flycheck
@@ -297,7 +297,7 @@
 
 ;; Tidy up the current buffer according to Python’s PEP8
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-(setq py-autopep8-options '("--max-line-length=100"))
+(setq py-autopep8-options '("--max-line-length=120"))
 
 ;; Treat undo history as a tree
 (global-undo-tree-mode t)
