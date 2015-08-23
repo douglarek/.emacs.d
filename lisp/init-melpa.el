@@ -51,6 +51,7 @@
 		      ido-vertical-mode
 		      imenu-anywhere
 		      javadoc-lookup
+		      jdee
 		      jedi
 		      jist
 		      lua-mode
