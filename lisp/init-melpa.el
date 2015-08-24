@@ -65,6 +65,7 @@
 		      projectile
 		      py-autopep8
 		      py-isort
+		      racer
 		      restclient
 		      rust-mode
 		      scala-mode2
@@ -492,7 +493,18 @@
 
 ;; A emacs lisp for searching the word at point with Dash
 (add-hook 'java-mode-hook
-		    (lambda () (setq dash-at-point-docset "java")))
+	  (lambda () (setq dash-at-point-docset "java")))
+
+
+;; Rust Code Completion utility
+(require 'racer)
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'rust-mode-hook '(lambda ()
+			     (global-set-key (kbd "TAB") #'company-complete)
+			     (setq company-tooltip-align-annotations t)))
+(setq racer-cmd (joindirs user-emacs-directory "racer" "racer"))
+(setq racer-rust-src-path (joindirs user-emacs-directory "racer" "rustc" "src"))
 
 
 (provide 'init-melpa)
