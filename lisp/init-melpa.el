@@ -501,10 +501,12 @@
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'rust-mode-hook '(lambda ()
-			     (global-set-key (kbd "TAB") #'company-complete)
+			     (global-set-key (kbd "M-/") #'company-complete)
 			     (setq company-tooltip-align-annotations t)))
-(setq racer-cmd (joindirs user-emacs-directory "racer" "racer"))
-(setq racer-rust-src-path (joindirs user-emacs-directory "racer" "rustc" "src"))
+(unless (executable-find "racer")
+  (setq racer-cmd (joindirs user-emacs-directory "racer" "racer")))
+(unless (getenv "RUST_SRC_PATH")
+  (setq racer-rust-src-path (joindirs user-emacs-directory "racer" "rustc" "src")))
 
 
 (provide 'init-melpa)
