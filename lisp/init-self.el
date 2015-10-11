@@ -53,6 +53,8 @@
 
 ;; enable ido
 (ido-mode t)
+; Disable the merging (the "looking in other directories" in ido vulgo), or switch with 'C-z' manually
+(setq ido-auto-merge-work-directories-length -1)
 (setq ido-enable-flex-matching t
       ido-everywhere t
       ido-use-virtual-buffers t)
