@@ -65,6 +65,7 @@
 		      projectile
 		      py-autopep8
 		      py-isort
+		      rainbow-delimiters
 		      restclient
 		      rust-mode
 		      scala-mode2
@@ -315,6 +316,19 @@
 (add-hook 'cider-repl-mode-hook #'company-mode)
 (add-hook 'cider-mode-hook #'company-mode)
 
+;; Adjust CIDER experience
+(add-hook 'clojure-mode-hook #'subword-mode)
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'paredit-mode)
+(add-hook 'cider-repl-mode-hook #'enable-paredit-mode)
+(setq cider-repl-result-prefix ";; => ")
+(setq cider-interactive-eval-result-prefix ";; => ")
+(setq nrepl-buffer-name-show-port t)
+(setq cider-repl-display-in-current-window t)
+(setq cider-prefer-local-resources t)
+(setq cider-stacktrace-fill-column 80)
+(setq cider-repl-use-clojure-font-lock t)
+(setq cider-font-lock-dynamically '(macro core function var))
 
 ;; A quick cursor jump mode for emacs
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
