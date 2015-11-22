@@ -24,6 +24,7 @@
 		      ace-jump-mode
 		      ace-jump-buffer
 		      bing-dict
+		      4clojure
 		      cider
 		      clj-refactor
 		      coffee-mode
@@ -506,7 +507,18 @@
 
 ;; A emacs lisp for searching the word at point with Dash
 (add-hook 'java-mode-hook
-		    (lambda () (setq dash-at-point-docset "java")))
+	  (lambda () (setq dash-at-point-docset "java")))
+
+
+;; Open and evaluate 4clojure.com questions in emacs
+; from http://sachachua.com/blog/2014/05/playing-around-clojure-cider-4clojure/
+(defun my/4clojure-check-and-proceed ()
+  "Check the answer and show the next question if it worked."
+  (interactive)
+  (let ((result (4clojure-check-answers)))
+    (unless (string-match "failed." result)
+      (4clojure-next-question))))
+(define-key clojure-mode-map (kbd "C-c C-c") 'my/4clojure-check-and-proceed)
 
 
 (provide 'init-melpa)
