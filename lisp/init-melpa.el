@@ -330,6 +330,7 @@
 (setq cider-stacktrace-fill-column 80)
 (setq cider-repl-use-clojure-font-lock t)
 (setq cider-font-lock-dynamically '(macro core function var))
+(setq cider-show-error-buffer nil)
 
 ;; A quick cursor jump mode for emacs
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
