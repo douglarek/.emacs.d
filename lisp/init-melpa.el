@@ -338,7 +338,10 @@
 (eval-after-load 'clojure-mode
   '(progn
      (define-key clojure-mode-map (kbd "C-c M-h") #'clojure-cheatsheet)))
-     (define-key cider-repl-mode-map (kbd "C-c M-h") #'clojure-cheatsheet)
+
+(eval-after-load 'clojure-repl-mode
+  '(progn
+     (define-key clojure-repl-mode-map (kbd "C-c M-h") #'clojure-cheatsheet)))
 
 
 ;; A quick cursor jump mode for emacs
