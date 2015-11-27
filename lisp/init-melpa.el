@@ -27,6 +27,7 @@
 		      4clojure
 		      cider
 		      clj-refactor
+		      clojure-cheatsheet
 		      coffee-mode
 		      company
 		      dash-at-point
@@ -331,6 +332,14 @@
 (setq cider-repl-use-clojure-font-lock t)
 (setq cider-font-lock-dynamically '(macro core function var))
 (setq cider-show-error-buffer nil)
+
+
+;; The Clojure Cheatsheet for Emacs
+(eval-after-load 'clojure-mode
+  '(progn
+     (define-key clojure-mode-map (kbd "C-c M-h") #'clojure-cheatsheet)))
+     (define-key cider-repl-mode-map (kbd "C-c M-h") #'clojure-cheatsheet)
+
 
 ;; A quick cursor jump mode for emacs
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
