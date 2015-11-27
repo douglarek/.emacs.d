@@ -534,5 +534,9 @@
 (define-key clojure-mode-map (kbd "C-c C-c") 'my/4clojure-check-and-proceed)
 
 
+;; SQL
+(setq sql-postgres-login-params '((user :default "postgres") (database :default "postgres") (server :default "localhost") (port :default 5432)))
+(add-hook 'sql-interactive-mode-hook (lambda () (toggle-truncate-lines t)))
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
