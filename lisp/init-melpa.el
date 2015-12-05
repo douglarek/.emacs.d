@@ -27,6 +27,7 @@
 		      4clojure
 		      cider
 		      clj-refactor
+		      clojure-cheatsheet
 		      coffee-mode
 		      company
 		      dash-at-point
@@ -336,6 +337,17 @@
 (setq cider-font-lock-dynamically '(macro core function var))
 (setq cider-show-error-buffer nil)
 
+
+;; The Clojure Cheatsheet for Emacs
+(eval-after-load 'clojure-mode
+  '(progn
+     (define-key clojure-mode-map (kbd "C-c M-h") #'clojure-cheatsheet)))
+
+(eval-after-load 'clojure-repl-mode
+  '(progn
+     (define-key clojure-repl-mode-map (kbd "C-c M-h") #'clojure-cheatsheet)))
+
+
 ;; A quick cursor jump mode for emacs
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
@@ -545,6 +557,10 @@
 (require 'go-eldoc)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+
+;; SQL
+(setq sql-postgres-login-params '((user :default "postgres") (database :default "postgres") (server :default "localhost") (port :default 5432)))
+(add-hook 'sql-interactive-mode-hook (lambda () (toggle-truncate-lines t)))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
