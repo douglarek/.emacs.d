@@ -45,6 +45,9 @@
 		      git-gutter
 		      git-messenger
 		      git-timemachine
+		      go-complete
+		      go-eldoc
+		      go-mode
 		      groovy-mode
 		      haskell-mode
 		      flycheck-haskell
@@ -521,6 +524,26 @@
     (unless (string-match "failed." result)
       (4clojure-next-question))))
 (define-key clojure-mode-map (kbd "C-c C-c") 'my/4clojure-check-and-proceed)
+
+
+;; An improved Go mode for emacs
+(add-hook 'go-mode-hook '(lambda ()
+			   (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
+			   (local-set-key (kbd "C-c C-i") 'go-goto-imports)
+			   (local-set-key (kbd "M-.") 'godef-jump) ; "M-*" back
+			   ; (make-local-variable 'before-save-hook)
+			   ; (add-hook 'before-save-hook 'gofmt-before-save)
+			   (local-set-key (kbd "C-c C-f") 'gofmt)))
+
+
+;; Native Go completion for Emacs
+(require 'go-complete)
+(add-hook 'completion-at-point-functions 'go-complete-at-point)
+
+
+;; Eldoc for Go
+(require 'go-eldoc)
+(add-hook 'go-mode-hook 'go-eldoc-setup)
 
 
 (provide 'init-melpa)
