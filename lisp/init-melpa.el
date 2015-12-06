@@ -546,7 +546,9 @@
 			   (make-local-variable 'before-save-hook)
 			   (setq gofmt-command "goimports")
 			   (add-hook 'before-save-hook 'gofmt-before-save)
-			   (local-set-key (kbd "C-c C-f") 'gofmt)))
+			   (local-set-key (kbd "C-c C-f") 'gofmt)
+			   (when (executable-find "oracle")
+			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))))
 
 
 ;; Native Go completion for Emacs
