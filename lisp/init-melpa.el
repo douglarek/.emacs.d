@@ -46,7 +46,7 @@
 		      git-gutter
 		      git-messenger
 		      git-timemachine
-		      go-complete
+		      go-autocomplete
 		      go-eldoc
 		      go-mode
 		      groovy-mode
@@ -259,7 +259,7 @@
 
 (require 'yasnippet)
 (yas-reload-all)
-(dolist (hook '(java-mode-hook clojure-mode-hook))
+(dolist (hook '(java-mode-hook clojure-mode-hook go-mode-hook))
   (add-hook hook #'yas-minor-mode)
   )
 
@@ -551,9 +551,10 @@
 			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))))
 
 
-;; Native Go completion for Emacs
-(require 'go-complete)
-(add-hook 'completion-at-point-functions 'go-complete-at-point)
+;; Go completion for Emacs
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
 
 
 ;; Eldoc for Go
