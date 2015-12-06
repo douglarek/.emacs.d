@@ -543,8 +543,9 @@
 			   (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
 			   (local-set-key (kbd "C-c C-i") 'go-goto-imports)
 			   (local-set-key (kbd "M-.") 'godef-jump) ; "M-*" back
-			   ; (make-local-variable 'before-save-hook)
-			   ; (add-hook 'before-save-hook 'gofmt-before-save)
+			   (make-local-variable 'before-save-hook)
+			   (setq gofmt-command "goimports")
+			   (add-hook 'before-save-hook 'gofmt-before-save)
 			   (local-set-key (kbd "C-c C-f") 'gofmt)))
 
 
