@@ -48,7 +48,9 @@
 		      git-timemachine
 		      go-autocomplete
 		      go-eldoc
+		      golint
 		      go-mode
+		      gorepl-mode
 		      groovy-mode
 		      haskell-mode
 		      flycheck-haskell
@@ -561,6 +563,10 @@
 ;; Eldoc for Go
 (require 'go-eldoc)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
+
+
+;; A minor emacs mode for Go REPL
+(add-hook 'go-mode-hook #'gorepl-mode)
 
 
 ;; SQL
