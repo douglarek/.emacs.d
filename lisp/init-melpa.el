@@ -396,7 +396,10 @@
 
 
 ;; Emacs Port of git-messenger.vim
+(require 'git-messenger)
 (add-hook 'git-messenger:popup-buffer-hook 'magit-commit-mode)
+(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
+(define-key git-messenger-map (kbd "m") 'git-messenger:copy-message)
 (setq magit-last-seen-setup-instructions "1.4.0")
 
 
