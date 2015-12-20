@@ -20,15 +20,24 @@
 (setq package-load-list '(all))
 
 ;; Install all needed
-(defvar my-packages '(
+(defvar my-packages '(ace-jump-buffer
+		      ace-jump-mode
+		      bing-dict
+		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
+		      git-gutter
+		      git-messenger
 		      go-autocomplete
 		      go-eldoc
 		      golint
 		      go-mode
 		      gorepl-mode
 		      ido-vertical-mode
+		      ix
+		      magit
+		      move-dup
+		      multiple-cursors
 		      projectile
 		      smartparens
 		      smex
@@ -42,6 +51,19 @@
     (package-install p)))
 
 
+;; A quick cursor jump mode for emacs
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+
+;; Super fast Emacs buffer switching extension for ace-jump-mode
+(global-set-key (kbd "M-g b") 'ace-jump-buffer)
+
+
+;; Make Emacs use the $PATH set up by the user's shell
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-check-syntax-automatically '(save))
@@ -51,6 +73,17 @@
   (eval-after-load 'flycheck
     '(custom-set-variables
 	    '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages))))
+
+
+;; git-gutter -> Emacs port of GitGutter which is Sublime Text Plugin
+(global-git-gutter-mode t)
+
+
+;; Emacs Port of git-messenger.vim
+(require 'git-messenger)
+(add-hook 'git-messenger:popup-buffer-hook 'magit-commit-mode)
+(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
+(define-key git-messenger-map (kbd "m") 'git-messenger:copy-message)
 
 
 ;; An improved Go mode for emacs
