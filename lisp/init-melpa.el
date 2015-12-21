@@ -23,6 +23,7 @@
 (defvar my-packages '(ace-jump-buffer
 		      ace-jump-mode
 		      bing-dict
+		      circe
 		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
@@ -160,6 +161,38 @@
 (yas-reload-all)
 (dolist (hook '(go-mode-hook))
   (add-hook hook #'yas-minor-mode))
+
+;; Circe, a Client for IRC in Emacs
+(setq circe-network-options
+      `(("Freenode")))
+
+(setq circe-reduce-lurker-spam t)
+
+(require 'lui-autopaste)
+(add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
+
+(setq circe-format-server-topic "*** Topic change by {userhost}: {topic-diff}")
+
+(add-hook 'circe-chat-mode-hook 'my-circe-prompt)
+(defun my-circe-prompt ()
+  "My circe prompt."
+  (lui-set-prompt
+   (concat (propertize (concat (buffer-name) ">")
+		       'face 'circe-prompt-face)
+	   " ")))
+
+(eval-after-load 'circe '(require 'circe-chanop))
+
+(setq lui-time-stamp-position 'right-margin
+      lui-fill-type nil)
+
+(add-hook 'lui-mode-hook 'my-lui-setup)
+(defun my-lui-setup ()
+  "My lui setup."
+  (setq fringes-outside-margins t
+	right-margin-width 10
+	word-wrap t
+	wrap-prefix "    "))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
