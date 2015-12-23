@@ -24,12 +24,13 @@
 		      ace-jump-mode
 		      bing-dict
 		      circe
+		      company
+		      company-go
 		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
 		      git-gutter
 		      git-messenger
-		      go-autocomplete
 		      go-eldoc
 		      golint
 		      go-mode
@@ -58,6 +59,10 @@
 
 ;; Super fast Emacs buffer switching extension for ace-jump-mode
 (global-set-key (kbd "M-g b") 'ace-jump-buffer)
+
+
+;; company-mode
+(add-hook 'after-init-hook 'global-company-mode)
 
 
 ;; Make Emacs use the $PATH set up by the user's shell
@@ -97,12 +102,9 @@
 			   (add-hook 'before-save-hook 'gofmt-before-save)
 			   (local-set-key (kbd "C-c C-f") 'gofmt)
 			   (when (executable-find "oracle")
-			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))))
-
-;; Go completion for Emacs
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-(ac-config-default)
+			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))
+			   (set (make-local-variable 'company-backends) '(company-go))
+			   (company-mode)))
 
 ;; Eldoc for Go
 (require 'go-eldoc)
