@@ -103,6 +103,8 @@
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)
+(define-key ac-completing-map "\r" 'ac-complete)
+(define-key ac-completing-map "\t" nil)
 
 ;; Eldoc for Go
 (require 'go-eldoc)
