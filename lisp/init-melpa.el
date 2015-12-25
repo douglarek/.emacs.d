@@ -40,6 +40,7 @@
 		      move-dup
 		      multiple-cursors
 		      projectile
+		      restclient
 		      smartparens
 		      smex
 		      undo-tree
