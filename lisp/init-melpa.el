@@ -34,7 +34,6 @@
 		      golint
 		      go-mode
 		      gorepl-mode
-		      ido-vertical-mode
 		      ix
 		      magit
 		      move-dup
@@ -113,10 +112,6 @@
 
 ;; A minor emacs mode for Go REPL
 (add-hook 'go-mode-hook #'gorepl-mode)
-
-
-;; Makes ido-mode display vertically -> ido-vertical-mode.el
-(if ido-mode (ido-vertical-mode t))
 
 
 ;; Project Interaction Library for Emacs
