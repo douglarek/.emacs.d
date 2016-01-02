@@ -25,6 +25,7 @@
 		      bing-dict
 		      circe
 		      company
+		      company-racer
 		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
@@ -41,6 +42,7 @@
 		      move-dup
 		      multiple-cursors
 		      projectile
+		      racer
 		      restclient
 		      rustfmt
 		      rust-mode
@@ -66,6 +68,7 @@
 
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
+(setq company-tooltip-align-annotations t)
 
 
 ;; Make Emacs use the $PATH set up by the user's shell
@@ -205,6 +208,11 @@
 ;; A major Emacs mode for editing Rust source code
 (add-hook 'rust-mode-hook '(lambda ()
 			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+			     (racer-mode)
+			     (eldoc-mode)
+			     (set (make-local-variable 'company-backends) '(company-racer))
+			     (local-set-key (kbd "M-.") #'racer-find-definition)
+			     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
 			     (rustfmt-enable-on-save)))
 
 
