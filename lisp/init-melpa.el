@@ -41,6 +41,7 @@
 		      multiple-cursors
 		      projectile
 		      restclient
+		      rustfmt
 		      rust-mode
 		      smartparens
 		      smex
@@ -198,7 +199,8 @@
 
 ;; A major Emacs mode for editing Rust source code
 (add-hook 'rust-mode-hook '(lambda ()
-			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
+			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+			     (rustfmt-enable-on-save)))
 
 
 (provide 'init-melpa)
