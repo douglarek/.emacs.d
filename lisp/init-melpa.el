@@ -27,6 +27,7 @@
 		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
+		      flycheck-rust
 		      git-gutter
 		      git-messenger
 		      go-autocomplete
@@ -40,6 +41,7 @@
 		      multiple-cursors
 		      projectile
 		      restclient
+		      rust-mode
 		      smartparens
 		      smex
 		      undo-tree
@@ -151,13 +153,14 @@
 	   (cdr dirs))))
 
 (defvar yasnippet-snippets (joindirs user-emacs-directory "snippets" "yasnippet-snippets"))
-(defvar go-snippets (joindirs user-emacs-directory "snippets" "go-snippets"))
+(defvar go-snippets (joindirs user-emacs-directory "snippets" "go-snippets" "snippets"))
+(defvar rust-snippets (joindirs user-emacs-directory "snippets" "rust-snippets" "snippets"))
 (defvar my-snippets (joindirs user-emacs-directory "snippets" "my-snippets"))
-(setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets))
+(setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets rust-snippets))
 
 (require 'yasnippet)
 (yas-reload-all)
-(dolist (hook '(go-mode-hook))
+(dolist (hook '(go-mode-hook rust-mode-hook))
   (add-hook hook #'yas-minor-mode))
 
 ;; Circe, a Client for IRC in Emacs
@@ -191,6 +194,12 @@
 	right-margin-width 10
 	word-wrap t
 	wrap-prefix "    "))
+
+
+;; A major Emacs mode for editing Rust source code
+(add-hook 'rust-mode-hook '(lambda ()
+			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
+
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
