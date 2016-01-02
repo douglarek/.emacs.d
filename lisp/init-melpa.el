@@ -209,7 +209,7 @@
 (add-hook 'rust-mode-hook '(lambda ()
 			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 			     (racer-mode)
-			     (eldoc-mode)
+			     (racer-turn-on-eldoc)
 			     (set (make-local-variable 'company-backends) '(company-racer))
 			     (local-set-key (kbd "M-.") #'racer-find-definition)
 			     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
