@@ -24,6 +24,7 @@
 		      ace-jump-mode
 		      bing-dict
 		      circe
+		      company
 		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
@@ -61,6 +62,10 @@
 
 ;; Super fast Emacs buffer switching extension for ace-jump-mode
 (global-set-key (kbd "M-g b") 'ace-jump-buffer)
+
+
+;; company-mode
+(add-hook 'after-init-hook 'global-company-mode)
 
 
 ;; Make Emacs use the $PATH set up by the user's shell
