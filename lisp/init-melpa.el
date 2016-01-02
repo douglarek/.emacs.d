@@ -206,6 +206,8 @@
 
 
 ;; A major Emacs mode for editing Rust source code
+;; *NOTE* I use RUST_SRC_PATH (Environment variable) for racer rather than set it in Emacs.
+;; Please see http://git.io/vukHq for more detail.
 (add-hook 'rust-mode-hook '(lambda ()
 			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 			     (racer-mode)
