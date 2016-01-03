@@ -68,11 +68,6 @@
 (global-set-key (kbd "M-g b") 'ace-jump-buffer)
 
 
-;; company-mode
-(add-hook 'after-init-hook 'global-company-mode)
-(setq company-tooltip-align-annotations t)
-
-
 ;; Make Emacs use the $PATH set up by the user's shell
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -118,17 +113,11 @@
 
 ;; Go completion for Emacs
 (require 'go-autocomplete)
-(require 'auto-complete-config)
-(ac-config-default)
-(define-key ac-completing-map "\r" 'ac-complete)
-(define-key ac-completing-map "\t" nil)
+
 
 ;; Eldoc for Go
 (require 'go-eldoc)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
-
-;; A minor emacs mode for Go REPL
-(add-hook 'go-mode-hook #'gorepl-mode)
 
 
 ;; Project Interaction Library for Emacs
@@ -218,11 +207,20 @@
 			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 			     (racer-mode)
 			     (racer-turn-on-eldoc)
+			     (company-mode)
+			     (setq company-tooltip-align-annotations t)
 			     (set (make-local-variable 'company-backends) '(company-racer))
 			     (local-set-key (kbd "M-.") #'racer-find-definition)
 			     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
 			     (rustfmt-enable-on-save)
 			     (cargo-minor-mode)))
+
+
+;; An Intelligent auto-completion extension for Emacs
+(require 'auto-complete-config)
+(ac-config-default)
+(define-key ac-completing-map "\r" 'ac-complete)
+(define-key ac-completing-map "\t" nil)
 
 
 (provide 'init-melpa)
