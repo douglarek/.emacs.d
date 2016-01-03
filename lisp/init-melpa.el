@@ -37,6 +37,7 @@
 		      golint
 		      go-mode
 		      gorepl-mode
+		      imenu-anywhere
 		      ix
 		      magit
 		      move-dup
@@ -89,6 +90,10 @@
 
 ;; git-gutter -> Emacs port of GitGutter which is Sublime Text Plugin
 (global-git-gutter-mode t)
+
+
+;; ido/helm imenu tag selection across all buffers with the same mode
+(global-set-key (kbd "C-c C-j") 'imenu-anywhere)
 
 
 ;; Emacs Port of git-messenger.vim
