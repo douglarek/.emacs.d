@@ -23,6 +23,7 @@
 (defvar my-packages '(ace-jump-buffer
 		      ace-jump-mode
 		      bing-dict
+		      cargo
 		      circe
 		      company
 		      company-racer
@@ -220,7 +221,8 @@
 			     (set (make-local-variable 'company-backends) '(company-racer))
 			     (local-set-key (kbd "M-.") #'racer-find-definition)
 			     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
-			     (rustfmt-enable-on-save)))
+			     (rustfmt-enable-on-save)
+			     (cargo-minor-mode)))
 
 
 (provide 'init-melpa)
