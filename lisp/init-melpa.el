@@ -109,7 +109,9 @@
 			   (add-hook 'before-save-hook 'gofmt-before-save)
 			   (local-set-key (kbd "C-c C-f") 'gofmt)
 			   (when (executable-find "oracle")
-			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))))
+			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))
+			   (when (executable-find "gorename")
+			     (load-file "$GOPATH/src/golang.org/x/tools/refactor/rename/go-rename.el"))))
 
 ;; Go completion for Emacs
 (require 'go-autocomplete)
