@@ -51,6 +51,7 @@
 		      smartparens
 		      smex
 		      undo-tree
+		      web-mode
 		      whole-line-or-region
 		      yasnippet))
 
@@ -223,6 +224,19 @@
 (ac-config-default)
 (define-key ac-completing-map "\r" 'ac-complete)
 (define-key ac-completing-map "\t" nil)
+
+
+;; web-mode.el is an autonomous emacs major-mode for editing web templates
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-hook 'web-mode-hook '(lambda ()
+			    (setq web-mode-enable-auto-pairing t)
+			    (setq web-mode-enable-auto-closing t)
+			    (setq web-mode-enable-css-colorization t)
+			    (setq web-mode-ac-sources-alist
+				  '(("css" . (ac-source-css-property))
+				    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+			    (local-set-key (kbd "RET") 'newline-and-indent)
+			    (define-key web-mode-map (kbd "C-n") 'web-mode-tag-match)))
 
 
 (provide 'init-melpa)
