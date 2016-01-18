@@ -27,6 +27,7 @@
 		      circe
 		      company
 		      company-racer
+		      counsel
 		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
@@ -50,6 +51,7 @@
 		      rust-mode
 		      smartparens
 		      smex
+		      swiper
 		      undo-tree
 		      web-mode
 		      whole-line-or-region
@@ -224,6 +226,13 @@
 (ac-config-default)
 (define-key ac-completing-map "\r" 'ac-complete)
 (define-key ac-completing-map "\t" nil)
+
+
+;; Emacs isearch with an overview. Oh, man!
+(ivy-mode 1)
+(global-set-key "\C-s" 'swiper)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-count-format "(%d/%d) ")
 
 
 ;; web-mode.el is an autonomous emacs major-mode for editing web templates
