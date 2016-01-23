@@ -20,8 +20,7 @@
 (setq package-load-list '(all))
 
 ;; Install all needed
-(defvar my-packages '(ace-jump-buffer
-		      ace-jump-mode
+(defvar my-packages '(avy
 		      bing-dict
 		      cargo
 		      circe
@@ -63,12 +62,9 @@
     (package-install p)))
 
 
-;; A quick cursor jump mode for emacs
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-
-
-;; Super fast Emacs buffer switching extension for ace-jump-mode
-(global-set-key (kbd "M-g b") 'ace-jump-buffer)
+;; Jump to things in Emacs tree-style
+(define-key global-map (kbd "C-c SPC") 'avy-goto-char)
+(global-set-key (kbd "M-g l") 'avy-goto-line)
 
 
 ;; Make Emacs use the $PATH set up by the user's shell
