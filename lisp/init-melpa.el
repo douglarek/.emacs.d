@@ -20,7 +20,8 @@
 (setq package-load-list '(all))
 
 ;; Install all needed
-(defvar my-packages '(avy
+(defvar my-packages '(ac-emoji
+		      avy
 		      bing-dict
 		      cargo
 		      circe
