@@ -55,6 +55,7 @@
 		      undo-tree
 		      web-mode
 		      whole-line-or-region
+		      w3m
 		      yasnippet))
 
 (dolist (p my-packages)
