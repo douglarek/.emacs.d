@@ -21,6 +21,7 @@
 
 ;; Install all needed
 (defvar my-packages '(ac-emoji
+		      ac-geiser
 		      avy
 		      bing-dict
 		      cargo
@@ -32,6 +33,7 @@
 		      flycheck
 		      flycheck-pos-tip
 		      flycheck-rust
+		      geiser
 		      git-gutter
 		      git-messenger
 		      go-autocomplete
@@ -244,6 +246,13 @@
 				    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 			    (local-set-key (kbd "RET") 'newline-and-indent)
 			    (define-key web-mode-map (kbd "C-n") 'web-mode-tag-match)))
+
+
+;; Emacs and scheme talk to each other
+(setq geiser-active-implementations '(racket))
+(add-hook 'geiser-mode-hook 'ac-geiser-setup)
+(add-hook 'geiser-repl-mode-hook 'ac-geiser-setup)
+(eval-after-load "auto-complete" '(add-to-list 'ac-modes 'geiser-repl-mode))
 
 
 (provide 'init-melpa)
