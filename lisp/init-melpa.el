@@ -46,6 +46,7 @@
 		      magit
 		      move-dup
 		      multiple-cursors
+		      paren-face
 		      projectile
 		      racer
 		      restclient
@@ -253,6 +254,10 @@
 (add-hook 'geiser-mode-hook 'ac-geiser-setup)
 (add-hook 'geiser-repl-mode-hook 'ac-geiser-setup)
 (eval-after-load "auto-complete" '(add-to-list 'ac-modes 'geiser-repl-mode))
+
+
+;; A face dedicated to lisp parentheses
+(global-paren-face-mode)
 
 
 (provide 'init-melpa)
