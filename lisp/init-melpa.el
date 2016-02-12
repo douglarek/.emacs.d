@@ -23,6 +23,7 @@
 (defvar my-packages '(ac-emoji
 		      ac-geiser
 		      avy
+		      base16-theme
 		      bing-dict
 		      cargo
 		      circe
@@ -48,6 +49,7 @@
 		      multiple-cursors
 		      paredit
 		      paren-face
+		      powerline
 		      projectile
 		      racer
 		      restclient
@@ -260,6 +262,12 @@
 
 ;; A face dedicated to lisp parentheses
 (global-paren-face-mode)
+
+
+;; Emacs powerline and base16 theme
+(when (display-graphic-p)
+  (powerline-default-theme)
+  (load-theme 'base16-eighties-dark t))
 
 
 (provide 'init-melpa)
