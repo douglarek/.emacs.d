@@ -77,7 +77,9 @@
 
 ;; Make Emacs use the $PATH set up by the user's shell
 (when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize)
+  (let ((envs '("GOROOT" "GOPATH")))
+    (exec-path-from-shell-copy-envs envs)))
 
 
 ;; Flycheck
