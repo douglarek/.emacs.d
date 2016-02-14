@@ -89,8 +89,7 @@
 ;; Flycheck errors display in tooltip, only when display-graphic-p
 (when (display-graphic-p)
   (eval-after-load 'flycheck
-    '(custom-set-variables
-	    '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages))))
+    (flycheck-pos-tip-mode)))
 
 
 ;; git-gutter -> Emacs port of GitGutter which is Sublime Text Plugin
