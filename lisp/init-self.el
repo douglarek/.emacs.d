@@ -40,8 +40,7 @@
 		(downcase
 		 (read-from-minibuffer
 		  (concat prompt "(yes or no) "))))
-       t
-     nil))
+       t nil))
 
 (defalias 'yes-or-no-p 'my-yes-or-mumble-p)
 
@@ -69,21 +68,6 @@
 ;; turn on column numbers
 (setq column-number-mode t)
 
-;; `run-python` use `ipython` instead `python` as much as possible
-(when (executable-find "ipython")
-  (setq
-   python-shell-interpreter "ipython"
-   python-shell-interpreter-args ""
-   python-shell-prompt-regexp "In \\[[0-9]+\\]: "
-   python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
-   python-shell-completion-setup-code
-   "from IPython.core.completerlib import module_completion"
-   python-shell-completion-module-string-code
-   "';'.join(module_completion('''%s'''))\n"
-   python-shell-completion-string-code
-   "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
-)
-
 ;; when you visit a file, point goes to the last place where it was when you previously visited the same file
 (require 'saveplace)
 (setq save-place-file (concat user-emacs-directory "saved-places"))
@@ -99,13 +83,8 @@
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; HideShow hides balanced-expression code blocks and multi-line comment blocks
-(defvar hs-modes '(python-mode-hook
-		   rust-mode-hook
-		   )
-  )
-(dolist (m hs-modes)
-  (add-hook m 'hs-minor-mode)
-  )
+(defvar hs-modes '(python-mode-hook rust-mode-hook))
+(dolist (m hs-modes) (add-hook m 'hs-minor-mode))
 
 
 ;; Turn on downcase region
@@ -127,9 +106,7 @@
 
 (let ((ea (read-lines (concat user-emacs-directory ".erc-auth"))))
   (when (not (= (length ea) 0))
-  (setq erc-nick (car ea)))
-  ;; (setq erc-password (nth 1 ea)))
-  )
+  (setq erc-nick (car ea))))
 
 
 ;; Using ThingAtPoint and the Existing C-s C-w
