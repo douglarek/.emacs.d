@@ -55,6 +55,9 @@
 		      restclient
 		      rustfmt
 		      rust-mode
+		      ensime
+		      sbt-mode
+		      scala-mode2
 		      smartparens
 		      smex
 		      swiper
@@ -270,6 +273,15 @@
   (powerline-default-theme)
   (load-theme 'base16-eighties-dark t))
 
+
+;;ENhanced Scala Interaction Mode for Emacs
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(add-hook 'scala-mode-hook #'yas-minor-mode)
+(add-hook 'scala-mode-hook '(lambda ()
+			      (local-set-key (kbd "M-.") 'sbt-find-definitions)
+			      (local-set-key (kbd "C-x '") 'sbt-run-previous-command)
+			      (auto-complete-mode 0)))
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
