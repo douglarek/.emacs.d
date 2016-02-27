@@ -281,6 +281,11 @@
 			      (local-set-key (kbd "M-.") 'sbt-find-definitions)
 			      (local-set-key (kbd "C-x '") 'sbt-run-previous-command)
 			      (auto-complete-mode 0)))
+(add-hook 'sbt-mode-hook '(lambda ()
+			    (setq compilation-skip-threshold 1)
+			    (local-set-key (kbd "C-a") 'comint-bol)
+			    (local-set-key (kbd "M-RET") 'comint-accumulate)))
+
 
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
