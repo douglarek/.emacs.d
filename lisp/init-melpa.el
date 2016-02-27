@@ -135,7 +135,6 @@
 
 ;; Project Interaction Library for Emacs
 (projectile-global-mode)
-(setq projectile-enable-caching t)
 
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it
