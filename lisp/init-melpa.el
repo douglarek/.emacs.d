@@ -240,6 +240,8 @@
 (global-set-key "\C-s" 'swiper)
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "(%d/%d) ")
+(global-set-key (kbd "C-c g") 'counsel-git)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
 
 
 ;; web-mode.el is an autonomous emacs major-mode for editing web templates
