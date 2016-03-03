@@ -119,8 +119,8 @@
 			   (setq gofmt-command "goimports")
 			   (add-hook 'before-save-hook 'gofmt-before-save)
 			   (local-set-key (kbd "C-c C-f") 'gofmt)
-			   (when (executable-find "oracle")
-			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))
+			   (when (executable-find "guru")
+			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/guru/go-guru.el"))
 			   (when (executable-find "gorename")
 			     (load-file "$GOPATH/src/golang.org/x/tools/refactor/rename/go-rename.el"))))
 
