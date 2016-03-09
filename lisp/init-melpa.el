@@ -112,13 +112,11 @@
 
 ;; An improved Go mode for emacs
 (add-hook 'go-mode-hook '(lambda ()
-			   (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
-			   (local-set-key (kbd "C-c C-i") 'go-goto-imports)
 			   (local-set-key (kbd "M-.") 'godef-jump) ; "M-*" back
 			   (make-local-variable 'before-save-hook)
 			   (setq gofmt-command "goimports")
 			   (add-hook 'before-save-hook 'gofmt-before-save)
-			   (local-set-key (kbd "C-c C-f") 'gofmt)
+			   (define-key go-mode-map (kbd "C-c C-j") nil)
 			   (when (executable-find "guru")
 			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/guru/go-guru.el"))
 			   (when (executable-find "gorename")
