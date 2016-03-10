@@ -45,6 +45,7 @@
 		      imenu-anywhere
 		      ix
 		      magit
+		      merlin
 		      move-dup
 		      multiple-cursors
 		      paredit
@@ -61,7 +62,9 @@
 		      smartparens
 		      smex
 		      swiper
+		      tuareg
 		      undo-tree
+		      utop
 		      web-mode
 		      whole-line-or-region
 		      w3m
@@ -273,7 +276,7 @@
   (load-theme 'base16-eighties-dark t))
 
 
-;;ENhanced Scala Interaction Mode for Emacs
+;; ENhanced Scala Interaction Mode for Emacs
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (add-hook 'scala-mode-hook #'yas-minor-mode)
@@ -285,6 +288,19 @@
 			    (setq compilation-skip-threshold 1)
 			    (local-set-key (kbd "C-a") 'comint-bol)
 			    (local-set-key (kbd "M-RET") 'comint-accumulate)))
+
+
+;; Emacs OCaml mode
+(add-hook 'tuareg-mode-hook (lambda ()
+			      (auto-fill-mode 1)
+			      (setq tuareg-lazy-= t)
+			      (setq tuareg-lazy-paren t)
+			      (setq tuareg-in-indent 0)))
+(add-hook 'tuareg-mode-hook 'merlin-mode)
+(add-hook 'caml-mode-hook 'merlin-mode)
+(setq merlin-ac-setup t)
+(setq utop-command "opam config exec -- utop -emacs")
+(add-hook 'tuareg-mode-hook 'utop-minor-mode)
 
 
 (provide 'init-melpa)
