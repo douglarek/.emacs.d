@@ -297,6 +297,7 @@
 			      (setq tuareg-lazy-paren t)
 			      (setq tuareg-in-indent 0)))
 (add-hook 'tuareg-mode-hook 'merlin-mode)
+(add-hook 'tuareg-mode-hook #'yas-minor-mode)
 (add-hook 'caml-mode-hook 'merlin-mode)
 (setq merlin-ac-setup t)
 (setq utop-command "opam config exec -- utop -emacs")
