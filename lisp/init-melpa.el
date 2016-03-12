@@ -25,15 +25,12 @@
 		      avy
 		      base16-theme
 		      bing-dict
-		      cargo
 		      circe
 		      company
-		      company-racer
 		      counsel
 		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
-		      flycheck-rust
 		      geiser
 		      git-gutter
 		      git-messenger
@@ -52,10 +49,7 @@
 		      paren-face
 		      powerline
 		      projectile
-		      racer
 		      restclient
-		      rustfmt
-		      rust-mode
 		      ensime
 		      sbt-mode
 		      scala-mode2
@@ -171,13 +165,12 @@
 
 (defvar yasnippet-snippets (joindirs user-emacs-directory "snippets" "yasnippet-snippets"))
 (defvar go-snippets (joindirs user-emacs-directory "snippets" "go-snippets" "snippets"))
-(defvar rust-snippets (joindirs user-emacs-directory "snippets" "rust-snippets" "snippets"))
 (defvar my-snippets (joindirs user-emacs-directory "snippets" "my-snippets"))
-(setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets rust-snippets))
+(setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets))
 
 (require 'yasnippet)
 (yas-reload-all)
-(dolist (hook '(go-mode-hook rust-mode-hook))
+(dolist (hook '(go-mode-hook))
   (add-hook hook #'yas-minor-mode))
 
 ;; Circe, a Client for IRC in Emacs
@@ -211,22 +204,6 @@
 	right-margin-width 10
 	word-wrap t
 	wrap-prefix "    "))
-
-
-;; A major Emacs mode for editing Rust source code
-;; *NOTE* I use RUST_SRC_PATH (Environment variable) for racer rather than set it in Emacs.
-;; Please see http://git.io/vukHq for more detail.
-(add-hook 'rust-mode-hook '(lambda ()
-			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-			     (racer-mode)
-			     (racer-turn-on-eldoc)
-			     (company-mode)
-			     (setq company-tooltip-align-annotations t)
-			     (set (make-local-variable 'company-backends) '(company-racer))
-			     (local-set-key (kbd "M-.") #'racer-find-definition)
-			     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
-			     (rustfmt-enable-on-save)
-			     (cargo-minor-mode)))
 
 
 ;; An Intelligent auto-completion extension for Emacs
