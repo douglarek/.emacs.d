@@ -277,6 +277,9 @@
 (add-hook 'tuareg-mode-hook #'yas-minor-mode)
 (add-hook 'caml-mode-hook 'merlin-mode)
 (setq merlin-ac-setup t)
+(add-hook 'merlin-mode-hook (lambda ()
+			      (local-set-key (kbd "M-.") 'merlin-locate)
+			      (local-set-key (kbd "M-,") 'merlin-pop-stack)))
 (setq utop-command "opam config exec -- utop -emacs")
 (add-hook 'tuareg-mode-hook 'utop-minor-mode)
 
