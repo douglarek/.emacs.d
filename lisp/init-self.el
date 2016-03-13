@@ -143,8 +143,7 @@
 	(save-buffers-kill-emacs))
     (message "Exit canceled")))
 
-(when window-system
-  (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+(global-set-key (kbd "C-x C-c") 'ask-before-closing)
 
 
 (provide 'init-self)
