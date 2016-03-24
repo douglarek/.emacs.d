@@ -36,6 +36,7 @@
 		      git-messenger
 		      go-autocomplete
 		      go-eldoc
+		      go-impl
 		      golint
 		      go-mode
 		      gorepl-mode
