@@ -276,14 +276,9 @@
 (add-hook 'tuareg-mode-hook 'merlin-mode)
 (add-hook 'tuareg-mode-hook #'yas-minor-mode)
 (setq merlin-ac-setup t)
-(defun merlin-jump-back ()
-  "Merlin pop stack and delete selected window."
-  (interactive)
-  (delete-window (selected-window))
-  (merlin-pop-stack))
 (add-hook 'merlin-mode-hook (lambda ()
 			      (local-set-key (kbd "M-.") 'merlin-locate)
-			      (local-set-key (kbd "M-,") 'merlin-jump-back)))
+			      (local-set-key (kbd "M-,") 'merlin-pop-stack)))
 (setq utop-command "opam config exec -- utop -emacs")
 (add-hook 'tuareg-mode-hook 'utop-minor-mode)
 
