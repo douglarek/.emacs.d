@@ -57,6 +57,7 @@
 		      scala-mode2
 		      smartparens
 		      smex
+		      swap-regions
 		      swiper
 		      tuareg
 		      undo-tree
