@@ -219,6 +219,7 @@
 ;; Emacs isearch with an overview. Oh, man!
 (ivy-mode 1)
 (global-set-key "\C-s" 'swiper)
+(advice-add 'swiper :after '(lambda () (recenter)))
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "(%d/%d) ")
 (global-set-key (kbd "C-c g") 'counsel-git)
