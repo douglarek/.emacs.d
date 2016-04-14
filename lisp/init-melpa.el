@@ -29,7 +29,6 @@
 		      counsel
 		      exec-path-from-shell
 		      flycheck
-		      flycheck-ocaml
 		      flycheck-pos-tip
 		      geiser
 		      git-gutter
@@ -239,11 +238,9 @@
 
 
 ;; Emacs OCaml mode
-(with-eval-after-load 'merlin
-  (setq merlin-error-after-save nil)
-  (flycheck-ocaml-setup))
 (add-hook 'tuareg-mode-hook 'merlin-mode)
 (add-hook 'tuareg-mode-hook #'yas-minor-mode)
+(add-hook 'caml-mode-hook 'merlin-mode)
 (setq merlin-ac-setup t)
 (add-hook 'merlin-mode-hook (lambda ()
 			      (local-set-key (kbd "M-.") 'merlin-locate)
