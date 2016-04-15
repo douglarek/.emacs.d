@@ -50,7 +50,6 @@
 		      paren-face
 		      powerline
 		      projectile
-		      restclient
 		      ensime
 		      sbt-mode
 		      scala-mode2
