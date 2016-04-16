@@ -38,7 +38,6 @@
 		      go-impl
 		      golint
 		      go-mode
-		      gorepl-mode
 		      imenu-anywhere
 		      ix
 		      magit
