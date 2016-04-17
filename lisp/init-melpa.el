@@ -49,6 +49,9 @@
 		      powerline
 		      projectile
 		      ensime
+		      cargo
+		      flycheck-rust
+		      rust-mode
 		      sbt-mode
 		      scala-mode2
 		      smartparens
@@ -164,12 +167,13 @@
 
 (defvar yasnippet-snippets (joindirs user-emacs-directory "snippets" "yasnippet-snippets"))
 (defvar go-snippets (joindirs user-emacs-directory "snippets" "go-snippets" "snippets"))
+(defvar rust-snippets (joindirs user-emacs-directory "snippets" "rust-snippets" "snippets"))
 (defvar my-snippets (joindirs user-emacs-directory "snippets" "my-snippets"))
 (setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets))
 
 (require 'yasnippet)
 (yas-reload-all)
-(dolist (hook '(go-mode-hook))
+(dolist (hook '(go-mode-hook rust-mode-hook))
   (add-hook hook #'yas-minor-mode))
 
 
@@ -245,6 +249,11 @@
 			      (local-set-key (kbd "M-,") 'merlin-pop-stack)))
 (setq utop-command "opam config exec -- utop -emacs")
 (add-hook 'tuareg-mode-hook 'utop-minor-mode)
+
+
+;;Emacs configuration for Rust
+(add-hook 'rust-mode-hook '(lambda ()
+			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
 
 (provide 'init-melpa)
