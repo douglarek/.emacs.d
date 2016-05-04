@@ -46,6 +46,7 @@
 		      multiple-cursors
 		      paredit
 		      paren-face
+		      plur
 		      powerline
 		      projectile
 		      ensime
