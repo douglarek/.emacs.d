@@ -22,9 +22,12 @@
 ;; Install all needed
 (defvar my-packages '(ac-emoji
 		      ac-geiser
+		      aggressive-indent
 		      avy
 		      base16-theme
 		      bing-dict
+		      cider
+		      clojure-mode
 		      company
 		      counsel
 		      exec-path-from-shell
@@ -40,6 +43,7 @@
 		      go-mode
 		      imenu-anywhere
 		      ix
+		      inf-clojure
 		      magit
 		      merlin
 		      move-dup
@@ -52,6 +56,7 @@
 		      ensime
 		      cargo
 		      flycheck-rust
+		      rainbow-delimiters
 		      rust-mode
 		      sbt-mode
 		      scala-mode2
@@ -252,9 +257,23 @@
 (add-hook 'tuareg-mode-hook 'utop-minor-mode)
 
 
-;;Emacs configuration for Rust
+;; Emacs configuration for Rust
 (add-hook 'rust-mode-hook '(lambda ()
 			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
+
+
+;; Emacs support for the Clojure(Script) programming language
+(add-hook 'clojure-mode-hook '(lambda ()
+				(subword-mode)
+				(smartparens-strict-mode)
+				(rainbow-delimiters-mode)
+				(aggressive-indent-mode)
+				(inf-clojure-minor-mode)
+				(eldoc-mode)
+				(clj-refactor-mode 1)
+				(yas-minor-mode 1)
+				(cljr-add-keybindings-with-prefix "C-c C-m")))
+(add-hook 'inf-clojure-mode-hook #'eldoc-mode)
 
 
 (provide 'init-melpa)
