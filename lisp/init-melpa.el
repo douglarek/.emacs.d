@@ -123,6 +123,7 @@
 			   (setq gofmt-command "goimports")
 			   (add-hook 'before-save-hook 'gofmt-before-save)
 			   (define-key go-mode-map (kbd "C-c C-j") nil)
+			   (yas-minor-mode 1)
 			   (when (executable-find "guru")
 			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/guru/go-guru.el"))
 			   (when (executable-find "gorename")
@@ -175,13 +176,12 @@
 (defvar yasnippet-snippets (joindirs user-emacs-directory "snippets" "yasnippet-snippets"))
 (defvar go-snippets (joindirs user-emacs-directory "snippets" "go-snippets" "snippets"))
 (defvar rust-snippets (joindirs user-emacs-directory "snippets" "rust-snippets" "snippets"))
+(defvar clojure-snippets (joindirs user-emacs-directory "snippets" "clojure-snippets" "snippets"))
 (defvar my-snippets (joindirs user-emacs-directory "snippets" "my-snippets"))
 (setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets))
 
 (require 'yasnippet)
 (yas-reload-all)
-(dolist (hook '(go-mode-hook rust-mode-hook))
-  (add-hook hook #'yas-minor-mode))
 
 
 ;; An Intelligent auto-completion extension for Emacs
@@ -260,6 +260,7 @@
 
 ;; Emacs configuration for Rust
 (add-hook 'rust-mode-hook '(lambda ()
+			     (yas-minor-mode 1)
 			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
 
