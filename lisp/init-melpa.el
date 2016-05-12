@@ -27,6 +27,7 @@
 		      base16-theme
 		      bing-dict
 		      cider
+		      clj-refactor
 		      clojure-mode
 		      company
 		      counsel
