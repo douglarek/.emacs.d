@@ -60,7 +60,7 @@
 		      rainbow-delimiters
 		      rust-mode
 		      sbt-mode
-		      scala-mode2
+		      scala-mode
 		      smartparens
 		      smex
 		      swap-regions
