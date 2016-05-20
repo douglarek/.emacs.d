@@ -72,6 +72,7 @@
 		      web-mode
 		      whole-line-or-region
 		      w3m
+		      xcscope
 		      yasnippet))
 
 (dolist (p my-packages)
@@ -287,7 +288,8 @@
 (add-hook 'c-mode-hook '(lambda ()
 			  (my:ac-c-headers-init)
 			  (yas-minor-mode 1)
-			  (local-set-key (kbd "C-c ;") 'iedit-mode)))
+			  (local-set-key (kbd "C-c ;") 'iedit-mode)
+			  (cscope-setup)))
 
 
 (provide 'init-melpa)
