@@ -21,6 +21,7 @@
 ;; Install all needed
 (defvar my-packages '(ac-emoji
 		      ac-geiser
+		      auto-complete-c-headers
 		      aggressive-indent
 		      avy
 		      base16-theme
@@ -41,6 +42,7 @@
 		      go-impl
 		      golint
 		      go-mode
+		      iedit
 		      imenu-anywhere
 		      ix
 		      inf-clojure
@@ -275,6 +277,17 @@
 				(yas-minor-mode 1)
 				(cljr-add-keybindings-with-prefix "C-c C-m")))
 (add-hook 'inf-clojure-mode-hook #'eldoc-mode)
+
+
+;; Emacs as a C/C++ Editor/IDE
+(defun my:ac-c-headers-init ()
+  "."
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers))
+(add-hook 'c-mode-hook '(lambda ()
+			  (my:ac-c-headers-init)
+			  (yas-minor-mode 1)
+			  (local-set-key (kbd "C-c ;") 'iedit-mode)))
 
 
 (provide 'init-melpa)
