@@ -276,6 +276,8 @@
 				(eldoc-mode)
 				(clj-refactor-mode 1)
 				(yas-minor-mode 1)
+				(setq cider-repl-display-help-banner nil)
+				(setq cider-repl-pop-to-buffer-on-connect nil)
 				(cljr-add-keybindings-with-prefix "C-c C-m")))
 (add-hook 'inf-clojure-mode-hook #'eldoc-mode)
 
