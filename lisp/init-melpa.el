@@ -269,7 +269,7 @@
 ;; Emacs support for the Clojure(Script) programming language
 (add-hook 'clojure-mode-hook '(lambda ()
 				(subword-mode)
-				(smartparens-strict-mode)
+				(paredit-mode)
 				(rainbow-delimiters-mode)
 				(aggressive-indent-mode)
 				(inf-clojure-minor-mode)
