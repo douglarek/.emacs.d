@@ -263,6 +263,7 @@
 ;; Emacs configuration for Rust
 (add-hook 'rust-mode-hook '(lambda ()
 			     (yas-minor-mode 1)
+			     (rust-enable-format-on-save)
 			     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
 
