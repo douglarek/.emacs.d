@@ -7,8 +7,8 @@
 ;;; Code:
 
 (require 'package)
-(setq package-archives '(("gnu"   . "http://elpa.zilongshanren.com/gnu/")
-			 ("melpa" . "http://elpa.zilongshanren.com/melpa/")))
+(setq package-archives '(("gnu"   . "https://elpa.zilongshanren.com/gnu/")
+			 ("melpa" . "https://elpa.zilongshanren.com/melpa/")))
 (package-initialize)
 
 ;; Refresh the packages descriptions
