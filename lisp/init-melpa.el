@@ -41,7 +41,9 @@
 		      go-eldoc
 		      go-impl
 		      golint
+		      go-guru
 		      go-mode
+		      go-rename
 		      iedit
 		      imenu-anywhere
 		      ix
@@ -125,15 +127,10 @@
 			   (setq gofmt-command "goimports")
 			   (add-hook 'before-save-hook 'gofmt-before-save)
 			   (define-key go-mode-map (kbd "C-c C-j") nil)
-			   (yas-minor-mode 1)
-			   (when (executable-find "guru")
-			     (load-file "$GOPATH/src/golang.org/x/tools/cmd/guru/go-guru.el"))
-			   (when (executable-find "gorename")
-			     (load-file "$GOPATH/src/golang.org/x/tools/refactor/rename/go-rename.el"))))
+			   (yas-minor-mode 1)))
 
 ;; Go completion for Emacs
 (require 'go-autocomplete)
-
 
 ;; Eldoc for Go
 (require 'go-eldoc)
