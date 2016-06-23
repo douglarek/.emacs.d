@@ -234,6 +234,10 @@
 
 ;; ENhanced Scala Interaction Mode for Emacs
 (require 'ensime)
+(add-hook 'java-mode-hook 'ensime-mode)
+(add-hook 'java-mode-hook '(lambda ()
+			     (setq c-basic-offset 2)
+			     (auto-complete-mode 0)))
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (add-hook 'scala-mode-hook #'yas-minor-mode)
 (add-hook 'scala-mode-hook '(lambda ()
