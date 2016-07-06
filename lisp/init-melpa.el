@@ -49,6 +49,7 @@
 		      imenu-anywhere
 		      ix
 		      inf-clojure
+		      kotlin-mode
 		      magit
 		      merlin
 		      move-dup
