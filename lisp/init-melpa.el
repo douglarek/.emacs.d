@@ -51,6 +51,7 @@
 		      inf-clojure
 		      lua-mode
 		      company-lua
+		      kotlin-mode
 		      magit
 		      merlin
 		      move-dup
