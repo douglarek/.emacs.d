@@ -49,6 +49,8 @@
 		      imenu-anywhere
 		      ix
 		      inf-clojure
+		      lua-mode
+		      company-lua
 		      magit
 		      merlin
 		      move-dup
@@ -304,6 +306,13 @@
 			       (setq indent-tabs-mode nil)
 			       (local-set-key (kbd "M-.") 'edts-find-source-under-point)
 			       (yas-minor-mode 1)))
+
+
+;; Emacs major mode for editing Lua
+(add-hook 'lua-mode-hook (lambda ()
+			   (company-mode)
+			   (setq-local company-backends '(company-lua))
+			   (yas-minor-mode)))
 
 
 (provide 'init-melpa)
