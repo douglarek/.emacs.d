@@ -49,6 +49,7 @@
 		      imenu-anywhere
 		      ix
 		      inf-clojure
+		      jedi
 		      lua-mode
 		      company-lua
 		      kotlin-mode
@@ -61,6 +62,7 @@
 		      plur
 		      powerline
 		      projectile
+		      py-autopep8
 		      ensime
 		      cargo
 		      flycheck-rust
@@ -95,7 +97,7 @@
 ;; Make Emacs use the $PATH set up by the user's shell
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
-  (let ((envs '("GOROOT" "GOPATH")))
+  (let ((envs '("GOROOT" "GOPATH" "PYTHONPATH")))
     (exec-path-from-shell-copy-envs envs)))
 
 
@@ -314,6 +316,14 @@
 			   (company-mode)
 			   (setq-local company-backends '(company-lua))
 			   (yas-minor-mode)))
+
+
+;; Python auto-completion for Emacs
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+(add-hook 'python-mode-hook (lambda ()(yas-minor-mode)))
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+(setq py-autopep8-options '("--max-line-length=120"))
 
 
 (provide 'init-melpa)
