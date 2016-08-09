@@ -312,18 +312,22 @@
 
 
 ;; Emacs major mode for editing Lua
-(add-hook 'lua-mode-hook (lambda ()
+(add-hook 'lua-mode-hook '(lambda ()
 			   (company-mode)
 			   (setq-local company-backends '(company-lua))
 			   (yas-minor-mode)))
 
 
 ;; Python auto-completion for Emacs
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-(add-hook 'python-mode-hook (lambda ()(yas-minor-mode)))
-(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-(setq py-autopep8-options '("--max-line-length=120"))
+(add-hook 'python-mode-hook '(lambda ()
+			       (jedi:setup)
+			       (setq jedi:complete-on-dot t)
+			       (local-set-key (kbd "M-.") 'jedi:goto-definition)
+			       (local-set-key (kbd "M-,") 'goto-definition-pop-marker)
+			       (local-set-key (kbd "C-c d") 'jedi:show-doc)
+			       (yas-minor-mode)
+			       (py-autopep8-enable-on-save)
+			       (setq py-autopep8-options '("--max-line-length=120"))))
 
 
 (provide 'init-melpa)
