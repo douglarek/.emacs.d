@@ -31,7 +31,6 @@
 		      clojure-mode
 		      company
 		      counsel
-		      edts
 		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
@@ -300,15 +299,6 @@
 			  (yas-minor-mode 1)
 			  (local-set-key (kbd "C-c ;") 'iedit-mode)
 			  (cscope-setup)))
-
-
-;; Erlang Development Tool Suite
-(add-hook 'erlang-mode-hook '(lambda ()
-			       (require 'edts-start) ; edts-compile-deps first.
-			       (add-to-list 'ac-modes 'erlang-mode)
-			       (setq indent-tabs-mode nil)
-			       (local-set-key (kbd "M-.") 'edts-find-source-under-point)
-			       (yas-minor-mode 1)))
 
 
 ;; Emacs major mode for editing Lua
