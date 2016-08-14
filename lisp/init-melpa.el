@@ -62,13 +62,10 @@
 		      powerline
 		      projectile
 		      py-autopep8
-		      ensime
 		      cargo
 		      flycheck-rust
 		      rainbow-delimiters
 		      rust-mode
-		      sbt-mode
-		      scala-mode
 		      smartparens
 		      smex
 		      swap-regions
@@ -234,24 +231,6 @@
 (when (display-graphic-p)
   (powerline-default-theme)
   (load-theme 'base16-eighties-dark t))
-
-
-;; ENhanced Scala Interaction Mode for Emacs
-(require 'ensime)
-(add-hook 'java-mode-hook 'ensime-mode)
-(add-hook 'java-mode-hook '(lambda ()
-			     (setq c-basic-offset 2)
-			     (auto-complete-mode 0)))
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-(add-hook 'scala-mode-hook #'yas-minor-mode)
-(add-hook 'scala-mode-hook '(lambda ()
-			      (local-set-key (kbd "M-.") 'sbt-find-definitions)
-			      (local-set-key (kbd "C-x '") 'sbt-run-previous-command)
-			      (auto-complete-mode 0)))
-(add-hook 'sbt-mode-hook '(lambda ()
-			    (setq compilation-skip-threshold 1)
-			    (local-set-key (kbd "C-a") 'comint-bol)
-			    (local-set-key (kbd "M-RET") 'comint-accumulate)))
 
 
 ;; Emacs OCaml mode
