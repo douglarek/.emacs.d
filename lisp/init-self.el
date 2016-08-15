@@ -150,5 +150,9 @@
 (tool-bar-mode -1)
 
 
+;; Start fullscreen
+(add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
+
+
 (provide 'init-self)
 ;;; init-self.el ends here
