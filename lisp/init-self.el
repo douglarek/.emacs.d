@@ -146,5 +146,9 @@
 (global-set-key (kbd "C-x C-c") 'ask-before-closing)
 
 
+;; Turn off tool bar.
+(tool-bar-mode -1)
+
+
 (provide 'init-self)
 ;;; init-self.el ends here
