@@ -31,6 +31,7 @@
 		      clojure-mode
 		      company
 		      counsel
+		      disable-mouse
 		      exec-path-from-shell
 		      flycheck
 		      flycheck-pos-tip
@@ -297,6 +298,9 @@
 			       (yas-minor-mode)
 			       (py-autopep8-enable-on-save)
 			       (setq py-autopep8-options '("--max-line-length=120"))))
+
+;; Disable the mouse in Emacs
+(global-disable-mouse-mode)
 
 
 (provide 'init-melpa)
