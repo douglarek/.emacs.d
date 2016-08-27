@@ -231,7 +231,7 @@
 ;; Emacs powerline and base16 theme
 (when (display-graphic-p)
   (powerline-default-theme)
-  (load-theme 'base16-eighties-dark t))
+  (load-theme 'base16-eighties t))
 
 
 ;; Emacs OCaml mode
