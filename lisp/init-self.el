@@ -93,6 +93,7 @@
 
 ;; Emacs GUI font settings
 (when (and (display-graphic-p) (eq system-type 'darwin))
+  (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (set-frame-font "Courier 16"))
 
@@ -144,10 +145,6 @@
     (message "Exit canceled")))
 
 (global-set-key (kbd "C-x C-c") 'ask-before-closing)
-
-
-;; Turn off tool bar.
-(tool-bar-mode -1)
 
 
 ;; Start fullscreen
