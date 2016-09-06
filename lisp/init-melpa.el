@@ -65,6 +65,7 @@
 		      cargo
 		      flycheck-rust
 		      rainbow-delimiters
+		      restclient
 		      rust-mode
 		      smartparens
 		      smex
