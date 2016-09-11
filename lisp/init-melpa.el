@@ -94,7 +94,7 @@
 ;; Make Emacs use the $PATH set up by the user's shell
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
-  (let ((envs '("GOROOT" "GOPATH" "PYTHONPATH" "PYENV_ROOT" "PYENV_SHELL")))
+  (let ((envs '("GOROOT" "GOPATH" "PYTHONPATH")))
     (exec-path-from-shell-copy-envs envs)))
 
 
