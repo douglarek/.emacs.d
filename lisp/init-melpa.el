@@ -53,6 +53,7 @@
 		      company-lua
 		      kotlin-mode
 		      magit
+		      meghanada
 		      merlin
 		      move-dup
 		      multiple-cursors
@@ -295,6 +296,13 @@
 
 ;; Disable the mouse in Emacs
 (global-disable-mouse-mode)
+
+
+;; A Better Java Development Environment for Emacs
+(add-hook 'java-mode-hook (lambda ()
+			    (meghanada-mode t)
+			    (auto-complete-mode 0)
+			    (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 
 
 (provide 'init-melpa)
