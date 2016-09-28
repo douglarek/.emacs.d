@@ -122,6 +122,7 @@
 			   (local-set-key (kbd "M-.") 'godef-jump) ; "M-*" back
 			   (make-local-variable 'before-save-hook)
 			   (setq gofmt-command "goimports")
+			   (setq flycheck-disabled-checkers '(go-errcheck))
 			   (add-hook 'before-save-hook 'gofmt-before-save)
 			   (define-key go-mode-map (kbd "C-c C-j") nil)
 			   (yas-minor-mode 1)))
