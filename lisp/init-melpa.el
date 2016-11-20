@@ -95,7 +95,7 @@
 ;; An improved Go mode for emacs
 (use-package go-mode
   :defer t
-  :init
+  :config
   (add-hook 'go-mode-hook (lambda ()
 			    (use-package go-impl)
 			    (use-package golint)
@@ -109,7 +109,6 @@
 			    (define-key go-mode-map (kbd "C-c C-j") nil)
 			    (yas-minor-mode 1)
 			    (go-eldoc-setup)))
-  :config
   (use-package go-autocomplete)
   (use-package go-eldoc :diminish eldoc-mode))
 
