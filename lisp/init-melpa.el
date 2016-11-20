@@ -26,11 +26,7 @@
 
 
 ;; Minor mode for Eclipse-like moving and duplicating lines or rectangles.
-(use-package move-dup
-  :bind (("C-c M-p" . md/move-lines-up)
-	 ("C-c M-n" . md/move-lines-down)
-	 ("C-M-p" . md/duplicate-up)
-	 ("C-M-n" . md/duplicate-down)))
+(use-package move-dup)
 
 
 ;; Multiple cursors for emacs.
@@ -56,8 +52,7 @@
 ;; Jump to things in Emacs tree-style
 (use-package avy
   :bind (("C-c SPC" . avy-goto-char)
-	 ("M-g l" . avy-goto-line))
-  )
+	 ("M-g l" . avy-goto-line)))
 
 
 ;; Make Emacs use the $PATH set up by the user's shell
@@ -66,8 +61,7 @@
   :config
   (exec-path-from-shell-initialize)
   (let ((envs '("GOROOT" "GOPATH" "PYTHONPATH")))
-    (exec-path-from-shell-copy-envs envs))
-  )
+    (exec-path-from-shell-copy-envs envs)))
 
 
 ;; Flycheck
@@ -76,10 +70,13 @@
   :init (add-hook 'after-init-hook #'global-flycheck-mode)
   :config (setq flycheck-check-syntax-automatically '(save)))
 
+
 ;; git-gutter -> Emacs port of GitGutter which is Sublime Text Plugin
 (use-package git-gutter
   :diminish git-gutter-mode
-  :config (global-git-gutter-mode t))
+  :bind (("C-x v s" . git-gutter:stage-hunk)
+	 ("C-x v r" . git-gutter:revert-hunk))
+  :init (global-git-gutter-mode t))
 
 
 ;; ido/helm imenu tag selection across all buffers with the same mode
