@@ -175,11 +175,12 @@
 (defvar rust-snippets (joindirs user-emacs-directory "snippets" "rust-snippets" "snippets"))
 (defvar clojure-snippets (joindirs user-emacs-directory "snippets" "clojure-snippets" "snippets"))
 (defvar my-snippets (joindirs user-emacs-directory "snippets" "my-snippets"))
-(setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets))
 
 (use-package yasnippet
   :diminish yas-minor-mode
-  :config (yas-reload-all))
+  :config
+  (setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets))
+  (yas-reload-all))
 
 
 ;; An Intelligent auto-completion extension for Emacs
