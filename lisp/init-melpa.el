@@ -25,8 +25,12 @@
 (use-package magit)
 
 
-;; Emacs minor mode for Eclipse-like moving and duplications of lines or selections with convenient key bindings
-(use-package move-dup)
+;; Minor mode for Eclipse-like moving and duplicating lines or rectangles.
+(use-package move-dup
+  :bind (("C-c M-p" . md/move-lines-up)
+	 ("C-c M-n" . md/move-lines-down)
+	 ("C-M-p" . md/duplicate-up)
+	 ("C-M-n" . md/duplicate-down)))
 
 
 ;; Multiple cursors for emacs.
