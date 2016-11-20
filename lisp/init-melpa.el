@@ -384,5 +384,11 @@
   (global-disable-mouse-mode))
 
 
+;; Youdao Dictionary interface for Emacs
+(use-package youdao-dictionary
+  :bind ("C-c y" . youdao-dictionary-search-at-point)
+  :config (setq url-automatic-caching t))
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
