@@ -368,7 +368,7 @@
 ;; Python auto-completion for Emacs
 (use-package jedi
   :defer t
-  :bind (:map jedi-mode-map
+  :bind (:map python-mode-map
 	      ("M-." . jedi:goto-definition)
 	      ("M-," . jedi:goto-definition-pop-marker)
 	      ("C-c d" . jedi:show-doc))
