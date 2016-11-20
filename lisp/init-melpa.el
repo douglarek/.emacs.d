@@ -17,19 +17,8 @@
   (package-install 'use-package))
 
 ;; A use-package declaration for simplifying your .emacs
-(use-package use-package :config (setq use-package-always-ensure t))
-
-
-;; Minimalists' Bing dictionary for Emacs
-(use-package bing-dict)
-
-
-;; An emacs client to http://ix.io pastebin
-(use-package ix)
-
-
-;; Kotlin major mode for Emacs
-(use-package kotlin-mode :defer t)
+(use-package use-package
+  :config (setq use-package-always-ensure t))
 
 
 ;; It's Magit! A Git Porcelain inside Emacs. https://magit.vc
