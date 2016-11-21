@@ -232,6 +232,7 @@
   (setq geiser-active-implementations '(racket))
   (use-package ac-geiser)
   (eval-after-load "auto-complete" '(add-to-list 'ac-modes 'geiser-repl-mode))
+  (use-package paredit)
   (add-hook 'scheme-mode-hook #'enable-paredit-mode))
 
 
@@ -295,6 +296,7 @@
 (use-package clojure-mode
   :defer t
   :config
+  (use-package paredit)
   (use-package rainbow-delimiters)
   (use-package aggressive-indent)
   (use-package inf-clojure)
