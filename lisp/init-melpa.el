@@ -64,6 +64,34 @@
     (exec-path-from-shell-copy-envs envs)))
 
 
+;; An Intelligent auto-completion extension for Emacs
+(use-package auto-complete
+  :diminish auto-complete-mode
+  :init (auto-complete-mode t)
+  :bind (:map ac-completing-map
+	      ("C-p" . ac-previous)
+	      ("C-n" . ac-next)
+	      ("\r" . ac-complete)
+	      ("\t" . nil))
+  :config
+  (use-package ac-emoji)
+  (ac-config-default))
+
+
+;; Modular in-buffer completion framework for Emacs
+(use-package company
+  :defer t
+  :diminish
+  :bind (:map company-active-map
+	      ("C-p" . company-select-previous)
+	      ("C-n" . company-select-next))
+  :config
+  (setq company-minimum-prefix-length 2)
+  (use-package company-flx :diminish)
+  (with-eval-after-load 'company
+    (company-flx-mode +1)))
+
+
 ;; Flycheck
 (use-package flycheck
   :diminish flycheck-mode
@@ -170,20 +198,6 @@
   :config
   (setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets))
   (yas-reload-all))
-
-
-;; An Intelligent auto-completion extension for Emacs
-(use-package auto-complete
-  :diminish auto-complete-mode
-  :init (auto-complete-mode t)
-  :bind (:map ac-completing-map
-	      ("C-p" . ac-previous)
-	      ("C-n" . ac-next)
-	      ("\r" . ac-complete)
-	      ("\t" . nil))
-  :config
-  (use-package ac-emoji)
-  (ac-config-default))
 
 
 ;; Emacs isearch with an overview. Oh, man!
@@ -303,7 +317,11 @@
   (use-package clj-refactor)
   (use-package yasnippet)
   (use-package cider)
+  (use-package auto-complete)
+  (use-package company)
+  (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'clojure-mode-hook '(lambda ()
+				  (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
 				  (subword-mode)
 				  (paredit-mode)
 				  (rainbow-delimiters-mode)
@@ -314,7 +332,8 @@
 				  (yas-minor-mode 1)
 				  (setq cider-repl-display-help-banner nil)
 				  (setq cider-repl-pop-to-buffer-on-connect nil)
-				  (cljr-add-keybindings-with-prefix "C-c C-m")))
+				  (cljr-add-keybindings-with-prefix "C-c C-m")
+				  (company-mode)))
   (add-hook 'inf-clojure-mode-hook #'eldoc-mode))
 
 
@@ -342,11 +361,6 @@
 
 
 ;; Emacs major mode for editing Lua
-(use-package company
-  :defer t
-  :config
-  (company-mode))
-
 (use-package lua-mode
   :config
   (add-hook 'lua-mode-hook '(lambda ()
