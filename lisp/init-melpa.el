@@ -34,7 +34,7 @@
 
 
 ;; A minor mode for performing structured editing of S-expression data
-(use-package paredit :defer t)
+(use-package paredit :defer t :diminish paredit-mode)
 
 
 ;; Easily (I hope) search and replace multiple variants of a word
@@ -81,7 +81,7 @@
 ;; Modular in-buffer completion framework for Emacs
 (use-package company
   :defer t
-  :diminish
+  :diminish company-mode
   :bind (:map company-active-map
 	      ("C-p" . company-select-previous)
 	      ("C-n" . company-select-next))
@@ -309,12 +309,13 @@
 ;; Emacs support for the Clojure(Script) programming language
 (use-package clojure-mode
   :defer t
+  :diminish eldoc-mode
   :config
   (use-package paredit)
   (use-package rainbow-delimiters)
   (use-package aggressive-indent)
   (use-package inf-clojure)
-  (use-package clj-refactor)
+  (use-package clj-refactor :diminish clj-refactor-mode)
   (use-package yasnippet)
   (use-package cider)
   (use-package auto-complete)
@@ -396,6 +397,7 @@
 
 ;; Disable the mouse in Emacs
 (use-package disable-mouse
+  :diminish (disable-mouse-mode global-disable-mouse-mode)
   :config
   (global-disable-mouse-mode))
 
