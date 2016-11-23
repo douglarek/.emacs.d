@@ -408,5 +408,13 @@
   :config (setq url-automatic-caching t))
 
 
+;; Emacs package that displays available keybindings in popup
+(use-package which-key
+  :diminish which-key-mode
+  :config
+  (which-key-mode)
+  (which-key-setup-minibuffer))
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
