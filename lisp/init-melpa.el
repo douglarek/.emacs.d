@@ -416,5 +416,9 @@
   (which-key-setup-minibuffer))
 
 
+;; Yet another Emacs paste mode, this one for Gist
+(use-package gist :defer t)
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
