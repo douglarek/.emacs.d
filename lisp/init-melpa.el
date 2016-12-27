@@ -263,8 +263,9 @@
 
 (use-package merlin
   :defer t
-  :bind (("M-." . merlin-locate)
-	 ("M-," . merlin-pop-stack))
+  :bind (:map merlin-mode-map
+	      ("M-." . merlin-locate)
+	      ("M-," . merlin-pop-stack))
   :config
   (setq merlin-ac-setup t)
   (add-hook 'caml-mode-hook 'merlin-mode))
