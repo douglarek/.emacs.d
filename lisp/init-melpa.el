@@ -378,21 +378,18 @@
 	      ("M-." . jedi:goto-definition)
 	      ("M-," . jedi:goto-definition-pop-marker)
 	      ("C-c d" . jedi:show-doc))
+  :init (add-hook 'python-mode-hook 'jedi:setup)
   :config
-  (jedi:setup)
-  (setq jedi:complete-on-dot t))
+  (setq jedi:complete-on-dot t)
+  (use-package yasnippet)
+  (yas-minor-mode)
+  (use-package py-autopep8))
 
 (use-package py-autopep8
   :defer t
   :config
   (py-autopep8-enable-on-save)
   (setq py-autopep8-options '("--max-line-length=120")))
-
-(add-hook 'python-mode-hook '(lambda ()
-			       (use-package jedi)
-			       (use-package yasnippet)
-			       (yas-minor-mode)
-			       (use-package py-autopep8)))
 
 
 ;; Disable the mouse in Emacs
