@@ -322,13 +322,12 @@
   (setq jedi:complete-on-dot t)
   (use-package yasnippet)
   (yas-minor-mode)
-  (setq flycheck-flake8-maximum-line-length 120)
-  (use-package py-autopep8))
+  (setq flycheck-flake8-maximum-line-length 120))
 
 (use-package py-autopep8
   :defer t
+  :init (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
   :config
-  (py-autopep8-enable-on-save)
   (setq py-autopep8-options '("--max-line-length=120")))
 
 
