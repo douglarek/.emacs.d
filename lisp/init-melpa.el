@@ -125,25 +125,26 @@
 (use-package go-mode
   :defer t
   :config
-  (add-hook 'go-mode-hook (lambda ()
-			    (use-package go-impl)
-			    (use-package golint)
-			    (use-package go-guru)
-			    (use-package go-rename)
-			    (local-set-key (kbd "M-.") 'godef-jump) ; "M-*" back
-			    (make-local-variable 'before-save-hook)
-			    (setq gofmt-command "goimports")
-			    (setq flycheck-disabled-checkers '(go-errcheck))
-			    (add-hook 'before-save-hook 'gofmt-before-save)
-			    (define-key go-mode-map (kbd "C-c C-j") nil)
-			    (yas-minor-mode 1)
-			    (go-eldoc-setup)))
+  (use-package go-impl)
+  (use-package golint)
+  (use-package go-guru)
+  (use-package go-rename)
   (use-package go-autocomplete)
-  (use-package go-eldoc :diminish eldoc-mode))
+  (use-package auto-complete)
+  (defun my-go-mode()
+    (local-set-key (kbd "M-.") 'godef-jump)
+    (make-local-variable 'before-save-hook)
+    (setq gofmt-command "goimports")
+    (setq flycheck-disabled-checkers '(go-errcheck))
+    (add-hook 'before-save-hook 'gofmt-before-save)
+    (define-key go-mode-map (kbd "C-c C-j") nil)
+    (yas-minor-mode))
+  (add-hook 'go-mode-hook 'my-go-mode))
 
-(use-package go-autocomplete
+(use-package go-eldoc
   :defer t
-  :config (use-package auto-complete))
+  :diminish eldoc-mode
+  :init (add-hook 'go-mode-hook 'go-eldoc-setup))
 
 
 ;; Project Interaction Library for Emacs
@@ -222,32 +223,16 @@
   :defer t
   :config
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-hook 'web-mode-hook '(lambda ()
-			    (setq web-mode-enable-auto-pairing t)
-			    (setq web-mode-enable-auto-closing t)
-			    (setq web-mode-enable-css-colorization t)
-			    (setq web-mode-ac-sources-alist
-				  '(("css" . (ac-source-css-property))
-				    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
-			    (local-set-key (kbd "RET") 'newline-and-indent)
-			    (define-key web-mode-map (kbd "C-n") 'web-mode-tag-match))))
-
-
-;; Emacs and scheme talk to each other
-(use-package ac-geiser
-  :defer t
-  :config
-  (add-hook 'geiser-mode-hook 'ac-geiser-setup)
-  (add-hook 'geiser-repl-mode-hook 'ac-geiser-setup))
-
-(use-package geiser
-  :defer t
-  :config
-  (setq geiser-active-implementations '(racket))
-  (use-package ac-geiser)
-  (eval-after-load "auto-complete" '(add-to-list 'ac-modes 'geiser-repl-mode))
-  (use-package paredit)
-  (add-hook 'scheme-mode-hook #'enable-paredit-mode))
+  (defun my-web-mode()
+    (setq web-mode-enable-auto-pairing t)
+    (setq web-mode-enable-auto-closing t)
+    (setq web-mode-enable-css-colorization t)
+    (setq web-mode-ac-sources-alist
+	  '(("css" . (ac-source-css-property))
+	    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+    (local-set-key (kbd "RET") 'newline-and-indent)
+    (define-key web-mode-map (kbd "C-n") 'web-mode-tag-match))
+  (add-hook 'web-mode-hook 'my-web-mode))
 
 
 ;; A face dedicated to lisp parentheses
@@ -278,11 +263,10 @@
 
 (use-package merlin
   :defer t
+  :bind (("M-." . merlin-locate)
+	 ("M-," . merlin-pop-stack))
   :config
   (setq merlin-ac-setup t)
-  (add-hook 'merlin-mode-hook (lambda ()
-				(local-set-key (kbd "M-.") 'merlin-locate)
-				(local-set-key (kbd "M-,") 'merlin-pop-stack)))
   (add-hook 'caml-mode-hook 'merlin-mode))
 
 (use-package utop
@@ -290,20 +274,6 @@
   :config
   (setq utop-command "opam config exec -- utop -emacs")
   (add-hook 'tuareg-mode-hook 'utop-minor-mode))
-
-
-;; Emacs configuration for Rust
-(use-package rust-mode
-  :defer t
-  :config
-  (use-package cargo)
-  (use-package flycheck-rust)
-  (add-hook 'rust-mode-hook '(lambda ()
-			       (yas-minor-mode 1)
-			       (rust-enable-format-on-save)
-			       (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))))
-
-(use-package flycheck-rust :defer t)
 
 
 ;; Emacs support for the Clojure(Script) programming language
@@ -321,55 +291,23 @@
   (use-package auto-complete)
   (use-package company)
   (add-hook 'cider-repl-mode-hook #'company-mode)
-  (add-hook 'clojure-mode-hook '(lambda ()
-				  (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
-				  (subword-mode)
-				  (paredit-mode)
-				  (rainbow-delimiters-mode)
-				  (aggressive-indent-mode)
-				  (inf-clojure-minor-mode)
-				  (eldoc-mode)
-				  (clj-refactor-mode 1)
-				  (yas-minor-mode 1)
-				  (setq cider-repl-display-help-banner nil)
-				  (setq cider-repl-pop-to-buffer-on-connect nil)
-				  (cljr-add-keybindings-with-prefix "C-c C-m")
-				  (company-mode)))
+  (defun my-clojure-mode()
+    (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
+    (subword-mode)
+    (paredit-mode)
+    (rainbow-delimiters-mode)
+    (aggressive-indent-mode)
+    (inf-clojure-minor-mode)
+    (eldoc-mode)
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1)
+    (setq cider-repl-display-help-banner nil)
+    (setq cider-repl-pop-to-buffer-on-connect nil)
+    (cljr-add-keybindings-with-prefix "C-c C-m")
+    (company-mode))
+  (add-hook 'clojure-mode-hook 'my-clojure-mode)
   (add-hook 'inf-clojure-mode-hook #'eldoc-mode))
 
-
-;; Emacs as a C/C++ Editor/IDE
-(use-package auto-complete-c-headers
-  :defer t
-  :config
-  (defun my:ac-c-headers-init ()
-    "."
-    (require 'auto-complete-c-headers)
-    (add-to-list 'ac-sources 'ac-source-c-headers))
-  (my:ac-c-headers-init))
-
-(use-package xcscope
-  :defer t
-  :config
-  (cscope-setup))
-
-(add-hook 'c-mode-hook '(lambda ()
-			  (use-package auto-complete-c-headers)
-			  (yas-minor-mode 1)
-			  (use-package iedit)
-			  (local-set-key (kbd "C-c ;") 'iedit-mode)
-			  (use-package xcscope)))
-
-
-;; Emacs major mode for editing Lua
-(use-package lua-mode
-  :config
-  (add-hook 'lua-mode-hook '(lambda ()
-			      (use-package company)
-			      (use-package company-lua)
-			      (setq-local company-backends '(company-lua))
-			      (use-package yasnippet)
-			      (yas-minor-mode))))
 
 ;; Python auto-completion for Emacs
 (use-package jedi
