@@ -321,6 +321,7 @@
   (setq jedi:complete-on-dot t)
   (use-package yasnippet)
   (yas-minor-mode)
+  (setq flycheck-flake8-maximum-line-length 120)
   (use-package py-autopep8))
 
 (use-package py-autopep8
