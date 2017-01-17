@@ -356,5 +356,11 @@
 (use-package gist :defer t)
 
 
+;; Complete interactive development program for Haskell
+(use-package intero
+  :defer t
+  :init (add-hook 'haskell-mode-hook 'intero-mode))
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
