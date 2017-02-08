@@ -362,5 +362,15 @@
   :init (add-hook 'haskell-mode-hook 'intero-mode))
 
 
+;; An Emacs minor mode that graphically indicates the fill column
+(use-package fill-column-indicator
+  :init
+  (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+  :config
+  (global-fci-mode 1)
+  (setq fci-rule-column 120)
+  (setq fci-rule-color "#2D2D2D"))
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
