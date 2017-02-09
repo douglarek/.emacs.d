@@ -51,7 +51,7 @@
 
 ;; Jump to things in Emacs tree-style
 (use-package avy
-  :bind (("C-c SPC" . avy-goto-char)
+  :bind (("C-;" . avy-goto-char)
 	 ("M-g l" . avy-goto-line)))
 
 
