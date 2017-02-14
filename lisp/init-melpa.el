@@ -196,6 +196,8 @@
 
 (use-package yasnippet
   :diminish yas-minor-mode
+  :init
+  (add-hook 'python-mode-hook #'yas-minor-mode)
   :config
   (setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets))
   (yas-reload-all))
@@ -320,8 +322,6 @@
   :init (add-hook 'python-mode-hook 'jedi:setup)
   :config
   (setq jedi:complete-on-dot t)
-  (use-package yasnippet)
-  (yas-minor-mode)
   (setq flycheck-flake8-maximum-line-length 120))
 
 (use-package py-autopep8
