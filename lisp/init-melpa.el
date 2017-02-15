@@ -362,5 +362,26 @@
   :init (add-hook 'haskell-mode-hook 'intero-mode))
 
 
+;; Emacs configuration for Rust
+(use-package rust-mode
+  :defer t
+  :config
+  (use-package racer)
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (setq rust-format-on-save t)
+  (use-package flycheck-rust)
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+; Racer support for Emacs
+(use-package racer
+  :defer t
+  :diminish racer-mode
+  :init
+  (company-mode 1)
+  (setq company-tooltip-align-annotations t)
+  (add-hook 'racer-mode-hook #'eldoc-mode)
+  (add-hook 'racer-mode-hook #'company-mode))
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
