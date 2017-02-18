@@ -148,7 +148,7 @@
 
 
 ;; Start fullscreen
-(add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 
 (provide 'init-self)
