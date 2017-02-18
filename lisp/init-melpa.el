@@ -372,7 +372,9 @@
   (use-package flycheck-rust)
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
   (use-package yasnippet)
-  (add-hook 'rust-mode-hook #'yas-minor-mode))
+  (add-hook 'rust-mode-hook #'yas-minor-mode)
+  (use-package cargo)
+  (add-hook 'rust-mode-hook 'cargo-minor-mode))
 
 ; Racer support for Emacs
 (use-package racer
