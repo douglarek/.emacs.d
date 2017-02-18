@@ -191,7 +191,7 @@
 (defvar yasnippet-snippets (joindirs user-emacs-directory "snippets" "yasnippet-snippets"))
 (defvar go-snippets (joindirs user-emacs-directory "snippets" "go-snippets" "snippets"))
 (defvar rust-snippets (joindirs user-emacs-directory "snippets" "rust-snippets" "snippets"))
-(defvar clojure-snippets (joindirs user-emacs-directory "snippets" "clojure-snippets" "snippets"))
+(defvar clojure-snippets (joindirs user-emacs-directory "snippets" "clojure-snippets"))
 (defvar my-snippets (joindirs user-emacs-directory "snippets" "my-snippets"))
 
 (use-package yasnippet
@@ -199,7 +199,7 @@
   :init
   (add-hook 'python-mode-hook #'yas-minor-mode)
   :config
-  (setq yas-snippet-dirs '(yasnippet-snippets my-snippets go-snippets))
+  (setq yas-snippet-dirs '(yasnippet-snippets go-snippets rust-snippets clojure-snippets my-snippets))
   (yas-reload-all))
 
 
@@ -370,7 +370,9 @@
   (add-hook 'rust-mode-hook #'racer-mode)
   (setq rust-format-on-save t)
   (use-package flycheck-rust)
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+  (use-package yasnippet)
+  (add-hook 'rust-mode-hook #'yas-minor-mode))
 
 ; Racer support for Emacs
 (use-package racer
