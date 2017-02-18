@@ -367,14 +367,16 @@
   :defer t
   :config
   (use-package racer)
-  (add-hook 'rust-mode-hook #'racer-mode)
-  (setq rust-format-on-save t)
   (use-package flycheck-rust)
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
   (use-package yasnippet)
-  (add-hook 'rust-mode-hook #'yas-minor-mode)
   (use-package cargo)
-  (add-hook 'rust-mode-hook 'cargo-minor-mode))
+  (defun my-rust-mode()
+    (racer-mode)
+    (add-hook 'before-save-hook 'rust-format-buffer)
+    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+    (yas-minor-mode)
+    (cargo-minor-mode))
+  (add-hook 'rust-mode-hook 'my-rust-mode))
 
 ; Racer support for Emacs
 (use-package racer
