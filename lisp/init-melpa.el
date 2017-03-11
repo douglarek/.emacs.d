@@ -243,11 +243,11 @@
 
 
 ;; Emacs powerline and base16 theme
-(use-package base16-theme
+(use-package zenburn-theme
   :when (display-graphic-p)
   :config
   (use-package powerline)
-  (load-theme 'base16-eighties t))
+  (load-theme 'zenburn t))
 
 (use-package powerline
   :defer t
