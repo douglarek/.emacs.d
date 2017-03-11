@@ -389,5 +389,16 @@
   (add-hook 'racer-mode-hook #'company-mode))
 
 
+;; A Better Java Development Environment for Emacs
+(use-package meghanada
+  :defer t
+  :init
+  (add-hook 'java-mode-hook
+	    (lambda ()
+	      (setq c-basic-offset 2 tab-width 2 indent-tabs-mode nil)
+	      (auto-complete-mode -1)
+	      (meghanada-mode t))))
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
