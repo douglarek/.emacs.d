@@ -400,5 +400,8 @@
 	      (meghanada-mode t))))
 
 
+(use-package w3m :defer t)
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
