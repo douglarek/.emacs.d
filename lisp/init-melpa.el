@@ -131,6 +131,7 @@
   (use-package go-rename)
   (use-package go-autocomplete)
   (use-package auto-complete)
+  (use-package go-add-tags)
   (defun my-go-mode()
     (local-set-key (kbd "M-.") 'godef-jump)
     (make-local-variable 'before-save-hook)
@@ -138,7 +139,11 @@
     (setq flycheck-disabled-checkers '(go-errcheck))
     (add-hook 'before-save-hook 'gofmt-before-save)
     (define-key go-mode-map (kbd "C-c C-j") nil)
-    (yas-minor-mode))
+    (yas-minor-mode)
+    (custom-set-variables
+     '(go-add-tags-style 'lower-camel-case))
+    (with-eval-after-load 'go-mode
+      (define-key go-mode-map (kbd "C-c t") #'go-add-tags)))
   (add-hook 'go-mode-hook 'my-go-mode))
 
 (use-package go-eldoc
