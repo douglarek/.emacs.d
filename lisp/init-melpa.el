@@ -7,8 +7,7 @@
 ;;; Code:
 
 (require 'package)
-(setq package-archives '(("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-			 ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 ;; Refresh and install use-package
