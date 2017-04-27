@@ -1,1 +1,1 @@
-git clone https://github.com/douglarek/.emacs.d.git --recurse-submodules
+$ git clone https://github.com/douglarek/.emacs.d.git --recurse-submodules
