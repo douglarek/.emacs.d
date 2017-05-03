@@ -332,6 +332,7 @@
   :defer t
   :init (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
   :config
+  (setenv "PYTHONIOENCODING" "utf8")
   (setq py-autopep8-options '("--max-line-length=120")))
 
 
