@@ -15,7 +15,8 @@
   (require 'init-melpa))
 
 (defconst custom-file (expand-file-name "custom.el" user-emacs-directory))
-(write-region "" nil custom-file)
+(when (not (file-exists-p custom-file))
+  (write-region "" nil custom-file))
 (setq custom-file custom-file)
 (load custom-file)
 
