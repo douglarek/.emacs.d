@@ -16,10 +16,11 @@
   (package-install 'use-package))
 
 ;; A use-package declaration for simplifying your .emacs
-(use-package use-package
-  :config
-  (setq use-package-verbose t)
-  (setq use-package-always-ensure t))
+(setq use-package-verbose t )
+(setq use-package-always-ensure t)
+(eval-when-compile (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 
 
 ;; It's Magit! A Git Porcelain inside Emacs. https://magit.vc
