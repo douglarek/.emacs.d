@@ -17,7 +17,9 @@
 
 ;; A use-package declaration for simplifying your .emacs
 (use-package use-package
-  :config (setq use-package-always-ensure t))
+  :config
+  (setq use-package-verbose t)
+  (setq use-package-always-ensure t))
 
 
 ;; It's Magit! A Git Porcelain inside Emacs. https://magit.vc
