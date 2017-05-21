@@ -411,5 +411,25 @@
 (use-package w3m :defer t)
 
 
+;; A c/c++ client/server indexer for c/c++/objc[++] with integration for Emacs based on clang
+(use-package rtags
+  :ensure t
+  :config
+  (define-key c-mode-map (kbd "M-.") #'rtags-find-symbol-at-point)
+  (define-key c++-mode-map (kbd "M-.") #'rtags-find-symbol-at-point)
+  (define-key c-mode-map (kbd "M-,") #'rtags-location-stack-back)
+  (define-key c++-mode-map (kbd "M-,") #'rtags-location-stack-back)
+  (use-package flycheck-rtags)
+  (require 'flycheck-rtags))
+
+(use-package cmake-mode)
+
+;; Use Emacs as a C/C++ IDE
+(use-package cmake-ide
+  :config
+  (require 'rtags)
+  (cmake-ide-setup))
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
