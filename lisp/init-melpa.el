@@ -413,16 +413,14 @@
 
 ;; A c/c++ client/server indexer for c/c++/objc[++] with integration for Emacs based on clang
 (use-package rtags
-  :ensure t
+  :defer t
+  :bind (("M-." . rtags-find-symbol-at-point)
+	 ("M-," . rtags-location-stack-back))
   :config
-  (define-key c-mode-map (kbd "M-.") #'rtags-find-symbol-at-point)
-  (define-key c++-mode-map (kbd "M-.") #'rtags-find-symbol-at-point)
-  (define-key c-mode-map (kbd "M-,") #'rtags-location-stack-back)
-  (define-key c++-mode-map (kbd "M-,") #'rtags-location-stack-back)
   (use-package flycheck-rtags)
   (require 'flycheck-rtags))
 
-(use-package cmake-mode)
+(use-package cmake-mode :defer t)
 
 ;; Use Emacs as a C/C++ IDE
 (use-package cmake-ide
