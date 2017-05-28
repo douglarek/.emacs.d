@@ -417,8 +417,11 @@
   :bind (("M-." . rtags-find-symbol-at-point)
 	 ("M-," . rtags-location-stack-back))
   :config
+  (setq c-default-style "linux" c-basic-offset 4)
   (use-package flycheck-rtags)
-  (require 'flycheck-rtags))
+  (require 'flycheck-rtags)
+  (use-package yasnippet)
+  (add-hook 'c-mode-common-hook '(lambda () (yas-minor-mode 1))))
 
 (use-package cmake-mode :defer t)
 
