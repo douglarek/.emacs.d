@@ -268,6 +268,7 @@
   (add-hook 'tuareg-mode-hook 'merlin-mode)
   (add-hook 'tuareg-mode-hook #'yas-minor-mode)
   (use-package merlin)
+  (use-package ocp-indent)
   (use-package utop))
 
 (use-package merlin
