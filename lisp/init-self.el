@@ -95,8 +95,8 @@
 (when (and (display-graphic-p) (eq system-type 'darwin))
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (set-default-font "Courier 15")
-  (set-frame-font "Source Code Pro 14"))
+  (set-default-font "Courier 14")
+  (set-frame-font "Source Code Pro 13"))
 
 (defun read-lines (filePath)
   "Return a list of lines of a file at FILEPATH."
