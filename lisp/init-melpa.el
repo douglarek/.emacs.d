@@ -253,12 +253,7 @@
 (use-package atom-one-dark-theme
   :when (display-graphic-p)
   :config
-  (use-package powerline)
   (load-theme 'atom-one-dark t))
-
-(use-package powerline
-  :defer t
-  :config (powerline-default-theme))
 
 
 ;; Emacs OCaml mode
