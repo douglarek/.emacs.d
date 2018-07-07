@@ -134,6 +134,10 @@
   (use-package go-autocomplete)
   (use-package auto-complete)
   (use-package go-add-tags)
+  (use-package go-fill-struct)
+  (use-package go-gen-test)
+  (use-package go-tag :config (setq go-tag-args (list "-transform" "camelcase")))
+  (use-package godoctor)
   (defun my-go-mode()
     (local-set-key (kbd "M-.") 'godef-jump)
     (make-local-variable 'before-save-hook)
@@ -142,8 +146,6 @@
     (add-hook 'before-save-hook 'gofmt-before-save)
     (define-key go-mode-map (kbd "C-c C-j") nil)
     (yas-minor-mode)
-    (custom-set-variables
-     '(go-add-tags-style 'lower-camel-case))
     (with-eval-after-load 'go-mode
       (define-key go-mode-map (kbd "C-c t") #'go-add-tags)))
   (add-hook 'go-mode-hook 'my-go-mode))

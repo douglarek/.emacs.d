@@ -47,8 +47,8 @@
 ;; disable startup message
 (setq inhibit-startup-message t)
 
-;; disable menu bar
-(menu-bar-mode -1)
+;; save place in files between sessions
+(save-place-mode 1)
 
 ;; enable ido
 (ido-mode t)
