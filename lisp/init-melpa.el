@@ -250,10 +250,11 @@
 
 
 ;; Emacs powerline and one-dark theme
-(use-package atom-one-dark-theme
+(use-package spacemacs-common
+  :ensure spacemacs-theme
   :when (display-graphic-p)
   :config
-  (load-theme 'atom-one-dark t))
+  (load-theme 'spacemacs-dark t))
 
 
 ;; Emacs OCaml mode
