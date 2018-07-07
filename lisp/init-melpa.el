@@ -356,5 +356,11 @@
 (use-package gist :defer t)
 
 
+;; Spacemacs powerline
+(use-package spaceline
+  :when (display-graphic-p)
+  :config (spaceline-emacs-theme))
+
+
 (provide 'init-melpa)
 ;;; init-melpa.el ends here
