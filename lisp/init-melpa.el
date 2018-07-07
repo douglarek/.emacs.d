@@ -7,7 +7,7 @@
 ;;; Code:
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://elpa.emacs-china.org/melpa/") t)
 (package-initialize)
 
 ;; Refresh and install use-package
@@ -19,7 +19,6 @@
 (setq use-package-verbose t )
 (setq use-package-always-ensure t)
 (eval-when-compile (require 'use-package))
-(require 'diminish)
 (require 'bind-key)
 
 
@@ -59,6 +58,7 @@
 
 ;; Make Emacs use the $PATH set up by the user's shell
 (use-package exec-path-from-shell
+  :init (setq exec-path-from-shell-check-startup-files nil)
   :when (memq window-system '(mac ns))
   :config
   (exec-path-from-shell-initialize)
@@ -333,13 +333,6 @@
   :config
   (setenv "PYTHONIOENCODING" "utf8")
   (setq py-autopep8-options '("--max-line-length=120")))
-
-
-;; Disable the mouse in Emacs
-(use-package disable-mouse
-  :diminish (disable-mouse-mode global-disable-mouse-mode)
-  :config
-  (global-disable-mouse-mode))
 
 
 ;; Youdao Dictionary interface for Emacs

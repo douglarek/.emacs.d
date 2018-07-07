@@ -95,8 +95,7 @@
 (when (and (display-graphic-p) (eq system-type 'darwin))
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (set-default-font "Courier 14")
-  (set-frame-font "Source Code Pro 13"))
+  (set-default-font "Courier 13"))
 
 (defun read-lines (filePath)
   "Return a list of lines of a file at FILEPATH."
@@ -150,6 +149,14 @@
 
 ;; Start fullscreen
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
+;; Emacs plus
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+
+;; Remove title bar file icon.
+(setq ns-use-proxy-icon nil)
+(setq frame-title-format nil)
 
 
 (provide 'init-self)
