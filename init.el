@@ -163,6 +163,17 @@
 (setq ns-use-proxy-icon nil)
 (setq frame-title-format nil)
 
+;; Disable the beep, and subtly flash the modeline
+;; https://www.emacswiki.org/emacs/AlarmBell
+(setq ring-bell-function
+      (lambda ()
+	(let ((orig-fg (face-foreground 'mode-line)))
+	  (set-face-foreground 'mode-line "#F2804F")
+	  (run-with-idle-timer 0.1 nil
+			       (lambda (fg) (set-face-foreground 'mode-line fg))
+			       orig-fg))))
+
+;;;;;;;;;;;;;;;;;;;; cut off ;;;;;;;;;;;;;;;;;;;;
 
 ;; Melpa init
 
