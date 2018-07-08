@@ -151,9 +151,11 @@
 
 (global-set-key (kbd "C-x C-c") 'ask-before-closing)
 
-
 ;; Start maximized frame
-(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+;; https://stackoverflow.com/questions/27758800/why-does-emacs-leave-a-gap-when-trying-to-maximize-the-frame
+(setq frame-resize-pixelwise t)
+(dotimes (n 3)
+  (toggle-frame-maximized))
 
 ;; Emacs dark theme title bar
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
