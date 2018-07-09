@@ -192,7 +192,10 @@
 (setq use-package-verbose t
       use-package-always-ensure t)
 (eval-when-compile (require 'use-package))
-(require 'bind-key)
+
+;; Diminished modes are minor modes with no modeline display
+(use-package diminish)
+(diminish 'eldoc-mode)
 
 ;; It's Magit! A Git Porcelain inside Emacs. https://magit.vc
 (use-package magit)
@@ -315,11 +318,11 @@
   (add-hook 'go-mode-hook 'my-go-mode))
 (use-package go-eldoc
   :defer t
-  :diminish eldoc-mode
   :init (add-hook 'go-mode-hook 'go-eldoc-setup))
 
 ;; Project Interaction Library for Emacs
 (use-package projectile
+  :diminish projectile-mode
   :config (projectile-global-mode))
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it
