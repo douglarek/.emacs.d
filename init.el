@@ -466,25 +466,27 @@
   (add-hook 'inf-clojure-mode-hook #'eldoc-mode))
 
 ;; Python auto-completion for Emacs
-(use-package jedi
+(use-package python
   :defer t
-  :bind (:map python-mode-map
-	      ("M-." . jedi:goto-definition)
-	      ("M-," . jedi:goto-definition-pop-marker)
-	      ("C-c d" . jedi:show-doc))
-  :init (add-hook 'python-mode-hook 'jedi:setup)
   :config
-  (setq jedi:complete-on-dot t)
-  (setq flycheck-flake8-maximum-line-length 120))
-(use-package py-autopep8
-  :defer t
-  :init (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-  :config
-  (setenv "PYTHONIOENCODING" "utf8")
-  (setq py-autopep8-options '("--max-line-length=120")))
+  (use-package jedi
+    :bind (:map python-mode-map
+		("M-." . jedi:goto-definition)
+		("M-," . jedi:goto-definition-pop-marker)
+		("C-c d" . jedi:show-doc))
+    :init (add-hook 'python-mode-hook 'jedi:setup)
+    :config
+    (setq jedi:complete-on-dot t)
+    (setq flycheck-flake8-maximum-line-length 120))
+  (use-package py-autopep8
+    :init (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+    :config
+    (setenv "PYTHONIOENCODING" "utf8")
+    (setq py-autopep8-options '("--max-line-length=120"))))
 
 ;; Youdao Dictionary interface for Emacs
 (use-package youdao-dictionary
+  :defer t
   :bind ("C-c y" . youdao-dictionary-search-at-point)
   :config (setq url-automatic-caching t))
 
