@@ -296,6 +296,13 @@
   (use-package go-gen-test)
   (use-package go-tag :config (setq go-tag-args (list "-transform" "camelcase")))
   (use-package godoctor)
+  (use-package flycheck-gometalinter
+    :config
+    (progn
+      (setq flycheck-gometalinter-vendor t) ;; skips 'vendor' directories
+      (setq flycheck-gometalinter-fast t)
+      (setq flycheck-gometalinter-disable-linters '("gotype" "gotypex"))
+      (flycheck-gometalinter-setup)))
   (defun my-go-mode()
     (local-set-key (kbd "M-.") 'godef-jump)
     (make-local-variable 'before-save-hook)
