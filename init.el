@@ -198,7 +198,7 @@
 (diminish 'eldoc-mode)
 
 ;; It's Magit! A Git Porcelain inside Emacs. https://magit.vc
-(use-package magit)
+(use-package magit :defer t)
 
 ;; Minor mode for Eclipse-like moving and duplicating lines or rectangles.
 (use-package move-dup)
@@ -267,7 +267,6 @@
 
 ;; Emacs package for highlighting uncommitted changes
 (use-package diff-hl
-  :after magit
   :bind (("C-x v r" . diff-hl-revert-hunk))
   :init (global-diff-hl-mode))
 
@@ -305,6 +304,7 @@
       (setq flycheck-gometalinter-fast t)
       (setq flycheck-gometalinter-disable-linters '("gotype" "gotypex"))
       (flycheck-gometalinter-setup)))
+  (use-package go-eldoc)
   (defun my-go-mode()
     (local-set-key (kbd "M-.") 'godef-jump)
     (make-local-variable 'before-save-hook)
@@ -315,10 +315,8 @@
     (yas-minor-mode)
     (with-eval-after-load 'go-mode
       (define-key go-mode-map (kbd "C-c t") #'go-add-tags)))
-  (add-hook 'go-mode-hook 'my-go-mode))
-(use-package go-eldoc
-  :defer t
-  :init (add-hook 'go-mode-hook 'go-eldoc-setup))
+  (add-hook 'go-mode-hook 'my-go-mode)
+  (add-hook 'go-mode-hook 'go-eldoc-setup))
 
 ;; Project Interaction Library for Emacs
 (use-package projectile
