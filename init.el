@@ -262,12 +262,11 @@
   :init (add-hook 'after-init-hook #'global-flycheck-mode)
   :config (setq flycheck-check-syntax-automatically '(save)))
 
-;; Git-gutter -> Emacs port of GitGutter which is Sublime Text Plugin
-(use-package git-gutter
-  :diminish git-gutter-mode
-  :bind (("C-x v s" . git-gutter:stage-hunk)
-	 ("C-x v r" . git-gutter:revert-hunk))
-  :init (global-git-gutter-mode t))
+;; Emacs package for highlighting uncommitted changes
+(use-package diff-hl
+  :after magit
+  :bind (("C-x v r" . diff-hl-revert-hunk))
+  :init (global-diff-hl-mode))
 
 ;; Ido/helm imenu tag selection across all buffers with the same mode
 (use-package imenu-anywhere
