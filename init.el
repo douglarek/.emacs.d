@@ -321,7 +321,7 @@
 ;; Project Interaction Library for Emacs
 (use-package projectile
   :diminish projectile-mode
-  :config (projectile-global-mode))
+  :config (projectile-mode))
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it
 (use-package smartparens
@@ -504,5 +504,37 @@
 (use-package spaceline
   :when (display-graphic-p)
   :config (spaceline-emacs-theme))
+
+;; The emacs major mode for editing files in the YAML data serialization format
+(use-package yaml-mode :defer t)
+
+;; Emacs: automatic and manual symbol highlighting
+(use-package highlight-symbol :defer t)
+
+;; A regexp/replace command for Emacs with interactive visual feedback
+(use-package visual-regexp
+  :after multiple-cursors
+  :bind
+  ("C-c r" . 'vr/replace)
+  ("C-c q" . 'vr/query-replace)
+  ("C-c m" . 'vr/mc-mark))
+
+;; Markdown Mode for Emacs
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+     ("\\.md\\'" . markdown-mode)
+     ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+;; Generate a TOC in markdown file
+(use-package markdown-toc :defer t :after markdown-mode)
+
+;; Step through historic versions of git controlled file using everyone's favourite editor
+(use-package git-timemachine :defer t)
+
+;; Local Variables:
+;; no-byte-compile: t
+;; End:
 
 ;;; init.el ends here
