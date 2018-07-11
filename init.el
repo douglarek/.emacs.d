@@ -193,6 +193,12 @@
       use-package-always-ensure t)
 (eval-when-compile (require 'use-package))
 
+;; Handling system packages though emacs
+(use-package use-package-ensure-system-package
+  :config
+  (pcase system-type
+    ('darwin (setq system-packages-package-manager 'brew))))
+
 ;; Diminished modes are minor modes with no modeline display
 (use-package diminish)
 (diminish 'eldoc-mode)
@@ -279,12 +285,13 @@
   :bind (("C-x v p" . git-messenger:popup-message)
 	 :map git-messenger-map
 	 ("m" . git-messenger:copy-message))
-  :init (add-hook 'git-messenger:popup-buffer-hook 'magit-commit-mode)
-  :config (use-package magit))
+  :after magit
+  :config (add-hook 'git-messenger:popup-buffer-hook 'magit-commit-mode))
 
 ;; An improved Go mode for emacs
 (use-package go-mode
   :defer t
+  :ensure-system-package go
   :config
   (use-package go-impl)
   (use-package golint)
@@ -413,25 +420,28 @@
 ;; Emacs OCaml mode
 (use-package tuareg
   :defer t
+  :ensure-system-package
+  ((opam . opam)
+   (ocamlmerlin . "opam install merlin -y")
+   (ocp-indent . "opam install ocp-indent -y")
+   (utop . "opam install utop -y"))
   :config
   (add-hook 'tuareg-mode-hook 'merlin-mode)
   (add-hook 'tuareg-mode-hook #'yas-minor-mode)
-  (use-package merlin)
+  (use-package merlin
+    :defer t
+    :bind (:map merlin-mode-map
+		("M-." . merlin-locate)
+		("M-," . merlin-pop-stack))
+    :config
+    (setq merlin-ac-setup t)
+    (add-hook 'caml-mode-hook 'merlin-mode))
   (use-package ocp-indent)
-  (use-package utop))
-(use-package merlin
-  :defer t
-  :bind (:map merlin-mode-map
-	      ("M-." . merlin-locate)
-	      ("M-," . merlin-pop-stack))
-  :config
-  (setq merlin-ac-setup t)
-  (add-hook 'caml-mode-hook 'merlin-mode))
-(use-package utop
-  :defer t
-  :config
-  (setq utop-command "opam config exec -- utop -emacs")
-  (add-hook 'tuareg-mode-hook 'utop-minor-mode))
+  (use-package utop
+    :defer t
+    :config
+    (setq utop-command "opam config exec -- utop -emacs")
+    (add-hook 'tuareg-mode-hook 'utop-minor-mode)))
 
 ;; Emacs support for the Clojure(Script) programming language
 (use-package clojure-mode
@@ -521,6 +531,7 @@
 
 ;; Markdown Mode for Emacs
 (use-package markdown-mode
+  :ensure-system-package multimarkdown
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
      ("\\.md\\'" . markdown-mode)
@@ -532,6 +543,9 @@
 
 ;; Step through historic versions of git controlled file using everyone's favourite editor
 (use-package git-timemachine :defer t)
+
+;; A simple emacs package to restart emacs from within emacs
+(use-package restart-emacs :defer t)
 
 ;; Local Variables:
 ;; no-byte-compile: t
