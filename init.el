@@ -48,6 +48,7 @@
 (setq inhibit-startup-message t)
 
 ;; Save place in files between sessions
+(setq save-place-file (concat user-emacs-directory "saved-places"))
 (save-place-mode 1)
 
 ;; Enable ido
