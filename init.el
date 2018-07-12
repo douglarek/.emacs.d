@@ -285,37 +285,35 @@
 (use-package go-mode
   :defer t
   :ensure-system-package go
-  :config
+  :init
   (use-package go-impl)
   (use-package golint)
   (use-package go-guru)
   (use-package go-rename)
-  (use-package go-autocomplete)
-  (use-package auto-complete)
+  (use-package go-autocomplete :after auto-complete)
   (use-package go-add-tags)
   (use-package go-fill-struct)
   (use-package go-gen-test)
   (use-package go-tag :config (setq go-tag-args (list "-transform" "camelcase")))
   (use-package godoctor)
   (use-package flycheck-gometalinter
-    :config
-    (progn
-      (setq flycheck-gometalinter-vendor t) ;; skips 'vendor' directories
-      (setq flycheck-gometalinter-fast t)
-      (setq flycheck-gometalinter-disable-linters '("gotype" "gotypex"))
-      (flycheck-gometalinter-setup)))
+    :init
+    (setq flycheck-gometalinter-vendor t) ;; skips 'vendor' directories
+    (setq flycheck-gometalinter-fast t)
+    (setq flycheck-gometalinter-disable-linters '("gotype" "gotypex"))
+    :config (flycheck-gometalinter-setup))
   (use-package go-eldoc)
-  (defun my-go-mode()
-    (local-set-key (kbd "M-.") 'godef-jump)
-    (make-local-variable 'before-save-hook)
-    (setq gofmt-command "goimports")
-    (setq flycheck-disabled-checkers '(go-errcheck))
-    (add-hook 'before-save-hook 'gofmt-before-save)
-    (define-key go-mode-map (kbd "C-c C-j") nil)
-    (yas-minor-mode)
-    (with-eval-after-load 'go-mode
-      (define-key go-mode-map (kbd "C-c t") #'go-add-tags)))
-  (add-hook 'go-mode-hook 'my-go-mode)
+  :config
+  (add-hook 'go-mode-hook (lambda ()
+			    (local-set-key (kbd "M-.") 'godef-jump)
+			    (make-local-variable 'before-save-hook)
+			    (setq gofmt-command "goimports")
+			    (setq flycheck-disabled-checkers '(go-errcheck))
+			    (add-hook 'before-save-hook 'gofmt-before-save)
+			    (define-key go-mode-map (kbd "C-c C-j") nil)
+			    (yas-minor-mode)
+			    (with-eval-after-load 'go-mode
+			      (define-key go-mode-map (kbd "C-c t") #'go-add-tags))))
   (add-hook 'go-mode-hook 'go-eldoc-setup))
 
 ;; Project Interaction Library for Emacs
