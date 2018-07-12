@@ -40,17 +40,9 @@
 	     (list "\\(.+/\\)*\\(.*?\\)" (expand-file-name "\\2" auto-save-directory))
 	     t)
 
-;; If you would prefer to have an empty response (hitting `RET`) or
-;; any other input to be `no` and still require the full word `yes` to use this function as an alias for `yes-or-no-p`
-(defun my-yes-or-mumble-p (prompt)
-   "PROMPT user with a yes-or-no question, but only test for yes."
-   (if (string= "yes"
-		(downcase
-		 (read-from-minibuffer
-		  (concat prompt "(yes or no) "))))
-       t nil))
-
-(defalias 'yes-or-no-p 'my-yes-or-mumble-p)
+;; Always Use `y-or-n-p', Never `yes-or-no-p'
+;; https://www.emacswiki.org/emacs/YesOrNoP
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Disable startup message
 (setq inhibit-startup-message t)
