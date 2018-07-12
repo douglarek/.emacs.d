@@ -306,16 +306,14 @@
   (use-package go-eldoc)
   :config
   (add-hook 'go-mode-hook (lambda ()
-			    (local-set-key (kbd "M-.") 'godef-jump)
-			    (make-local-variable 'before-save-hook)
 			    (setq gofmt-command "goimports")
-			    (setq flycheck-disabled-checkers '(go-errcheck))
-			    (add-hook 'before-save-hook 'gofmt-before-save)
 			    (define-key go-mode-map (kbd "C-c C-j") nil)
-			    (yas-minor-mode)
-			    (with-eval-after-load 'go-mode
-			      (define-key go-mode-map (kbd "C-c t") #'go-add-tags))))
-  (add-hook 'go-mode-hook 'go-eldoc-setup))
+			    (define-key go-mode-map (kbd "M-.") #'godef-jump)
+			    (define-key go-mode-map (kbd "C-c i") #'go-import-add)
+			    (define-key go-mode-map (kbd "C-c t") #'go-add-tags)))
+  (add-hook 'go-mode-hook 'go-eldoc-setup)
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (add-hook 'go-mode-hook #'yas-minor-mode))
 
 ;; Project Interaction Library for Emacs
 (use-package projectile
