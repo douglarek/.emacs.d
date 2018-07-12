@@ -278,7 +278,8 @@
 
 ;; Ido/helm imenu tag selection across all buffers with the same mode
 (use-package imenu-anywhere
-  :bind ("C-c C-j" . imenu-anywhere))
+  :after ivy
+  :bind ("C-c C-j" . ivy-imenu-anywhere))
 
 ;; Emacs Port of git-messenger.vim
 (use-package git-messenger
