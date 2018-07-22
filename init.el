@@ -546,13 +546,15 @@
   (setq inferior-lisp-program "sbcl")
   ;; https://github.com/Fuco1/smartparens/wiki/Working-with-expressions
   ;; http://danmidwood.com/content/2014/11/21/animated-paredit.html
+  (sp-local-pair 'lisp-mode "'" "'" :actions nil)
   (add-hook 'lisp-mode-hook #'smartparens-strict-mode)
   :config
   (defun my-sly ()
     (auto-complete-mode 0)
     (company-mode))
-  (add-hook 'sly-mode-hook 'my-sly)
-  (add-hook 'sly-mrepl-hook 'my-sly))
+  (add-hook 'sly-mode-hook #'my-sly)
+  (sp-local-pair 'sly-mrepl-mode "'" "'" :actions nil)
+  (add-hook 'sly-mrepl-hook #'my-sly))
 
 ;; Local Variables:
 ;; no-byte-compile: t
