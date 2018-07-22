@@ -537,6 +537,23 @@
 ;; A simple emacs package to restart emacs from within emacs
 (use-package restart-emacs :defer t)
 
+;; Sylvester the Cat's Common Lisp IDE
+(use-package sly
+  :defer t
+  :ensure-system-package sbcl
+  :init
+  (setq sly-ignore-protocol-mismatches t)
+  (setq inferior-lisp-program "sbcl")
+  ;; https://github.com/Fuco1/smartparens/wiki/Working-with-expressions
+  ;; http://danmidwood.com/content/2014/11/21/animated-paredit.html
+  (add-hook 'lisp-mode-hook #'smartparens-strict-mode)
+  :config
+  (defun my-sly ()
+    (auto-complete-mode 0)
+    (company-mode))
+  (add-hook 'sly-mode-hook 'my-sly)
+  (add-hook 'sly-mrepl-hook 'my-sly))
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
