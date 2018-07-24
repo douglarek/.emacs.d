@@ -356,14 +356,13 @@
 (defvar yasnippet-snippets (joindirs user-emacs-directory "snippets" "yasnippet-snippets"))
 (defvar go-snippets (joindirs user-emacs-directory "snippets" "go-snippets" "snippets"))
 (defvar rust-snippets (joindirs user-emacs-directory "snippets" "rust-snippets" "snippets"))
-(defvar clojure-snippets (joindirs user-emacs-directory "snippets" "clojure-snippets"))
 (defvar my-snippets (joindirs user-emacs-directory "snippets" "my-snippets"))
 (use-package yasnippet
   :diminish yas-minor-mode
   :init
   (add-hook 'python-mode-hook #'yas-minor-mode)
   :config
-  (setq yas-snippet-dirs '(yasnippet-snippets go-snippets rust-snippets clojure-snippets my-snippets))
+  (setq yas-snippet-dirs '(yasnippet-snippets go-snippets rust-snippets my-snippets))
   (yas-reload-all))
 
 ;; Emacs isearch with an overview. Oh, man!
@@ -436,33 +435,26 @@
 ;; Emacs support for the Clojure(Script) programming language
 (use-package clojure-mode
   :defer t
-  :diminish eldoc-mode
+  :init
+  (setq cider-repl-display-help-banner nil)
+  (setq cider-repl-pop-to-buffer-on-connect nil)
   :config
-  (use-package paredit)
-  (use-package rainbow-delimiters)
   (use-package aggressive-indent)
   (use-package inf-clojure)
   (use-package clj-refactor :diminish clj-refactor-mode)
-  (use-package yasnippet)
   (use-package cider)
-  (use-package auto-complete)
-  (use-package company)
-  (add-hook 'cider-repl-mode-hook #'company-mode)
   (defun my-clojure-mode()
     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
     (subword-mode)
-    (paredit-mode)
-    (rainbow-delimiters-mode)
+    (smartparens-strict-mode)
     (aggressive-indent-mode)
     (inf-clojure-minor-mode)
-    (eldoc-mode)
     (clj-refactor-mode 1)
-    (yas-minor-mode 1)
-    (setq cider-repl-display-help-banner nil)
-    (setq cider-repl-pop-to-buffer-on-connect nil)
     (cljr-add-keybindings-with-prefix "C-c C-m")
+    (auto-complete-mode 0)
     (company-mode))
   (add-hook 'clojure-mode-hook 'my-clojure-mode)
+  (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'inf-clojure-mode-hook #'eldoc-mode))
 
 ;; Python auto-completion for Emacs
