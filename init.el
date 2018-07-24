@@ -359,8 +359,6 @@
 (defvar my-snippets (joindirs user-emacs-directory "snippets" "my-snippets"))
 (use-package yasnippet
   :diminish yas-minor-mode
-  :init
-  (add-hook 'python-mode-hook #'yas-minor-mode)
   :config
   (setq yas-snippet-dirs '(yasnippet-snippets go-snippets rust-snippets my-snippets))
   (yas-reload-all))
@@ -466,15 +464,16 @@
 		("M-." . jedi:goto-definition)
 		("M-," . jedi:goto-definition-pop-marker)
 		("C-c d" . jedi:show-doc))
-    :init (add-hook 'python-mode-hook 'jedi:setup)
     :config
     (setq jedi:complete-on-dot t)
     (setq flycheck-flake8-maximum-line-length 120))
   (use-package py-autopep8
-    :init (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
     :config
     (setenv "PYTHONIOENCODING" "utf8")
-    (setq py-autopep8-options '("--max-line-length=120"))))
+    (setq py-autopep8-options '("--max-line-length=120")))
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+  (add-hook 'python-mode-hook #'yas-minor-mode))
 
 ;; Youdao Dictionary interface for Emacs
 (use-package youdao-dictionary
